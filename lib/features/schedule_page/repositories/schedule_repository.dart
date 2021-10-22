@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:injectable/injectable.dart';
 import 'package:kpi_schedule/features/schedule_page/view_models/schedule_page_view_model.dart';
 
