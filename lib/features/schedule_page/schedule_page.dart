@@ -13,17 +13,15 @@ class SchedulePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final stateUtils = getIt<StateUtils>();
 
-    return BlocProvider(
-      create: (_) => stateUtils.initScheduleBloc(),
-      child: BlocBuilder<ScheduleBloc, ScheduleState>(
-        builder: (_, state) {
-          return state.when(
-            initial: stateUtils.buildInitialState,
-            loading: stateUtils.buildLoadingState,
-            loaded: stateUtils.buildLoadedState,
-          );
-        },
-      ),
+    return BlocBuilder<ScheduleBloc, ScheduleState>(
+      bloc: stateUtils.initScheduleBloc(),
+      builder: (_, state) {
+        return state.when(
+          initial: stateUtils.buildInitialState,
+          loading: stateUtils.buildLoadingState,
+          loaded: stateUtils.buildLoadedState,
+        );
+      },
     );
   }
 }

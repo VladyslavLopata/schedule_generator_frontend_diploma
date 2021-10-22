@@ -17,14 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$LoginEventTearOff {
   const _$LoginEventTearOff();
 
-  AuthorizeEvent login(Credentials credentials) {
-    return AuthorizeEvent(
-      credentials,
+  AuthorizeEvent login() {
+    return const AuthorizeEvent();
+  }
+
+  LoginChangedEvent loginChanged(String login) {
+    return LoginChangedEvent(
+      login,
     );
   }
 
-  RegisterEvent register() {
-    return const RegisterEvent();
+  PasswordChangedEvent passwordChanged(String password) {
+    return PasswordChangedEvent(
+      password,
+    );
   }
 }
 
@@ -35,39 +41,45 @@ const $LoginEvent = _$LoginEventTearOff();
 mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Credentials credentials) login,
-    required TResult Function() register,
+    required TResult Function() login,
+    required TResult Function(String login) loginChanged,
+    required TResult Function(String password) passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthorizeEvent value) login,
-    required TResult Function(RegisterEvent value) register,
+    required TResult Function(LoginChangedEvent value) loginChanged,
+    required TResult Function(PasswordChangedEvent value) passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,9 +106,6 @@ abstract class $AuthorizeEventCopyWith<$Res> {
   factory $AuthorizeEventCopyWith(
           AuthorizeEvent value, $Res Function(AuthorizeEvent) then) =
       _$AuthorizeEventCopyWithImpl<$Res>;
-  $Res call({Credentials credentials});
-
-  $CredentialsCopyWith<$Res> get credentials;
 }
 
 /// @nodoc
@@ -108,85 +117,56 @@ class _$AuthorizeEventCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
   @override
   AuthorizeEvent get _value => super._value as AuthorizeEvent;
-
-  @override
-  $Res call({
-    Object? credentials = freezed,
-  }) {
-    return _then(AuthorizeEvent(
-      credentials == freezed
-          ? _value.credentials
-          : credentials // ignore: cast_nullable_to_non_nullable
-              as Credentials,
-    ));
-  }
-
-  @override
-  $CredentialsCopyWith<$Res> get credentials {
-    return $CredentialsCopyWith<$Res>(_value.credentials, (value) {
-      return _then(_value.copyWith(credentials: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$AuthorizeEvent implements AuthorizeEvent {
-  const _$AuthorizeEvent(this.credentials);
-
-  @override
-  final Credentials credentials;
+  const _$AuthorizeEvent();
 
   @override
   String toString() {
-    return 'LoginEvent.login(credentials: $credentials)';
+    return 'LoginEvent.login()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AuthorizeEvent &&
-            (identical(other.credentials, credentials) ||
-                const DeepCollectionEquality()
-                    .equals(other.credentials, credentials)));
+    return identical(this, other) || (other is AuthorizeEvent);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(credentials);
-
-  @JsonKey(ignore: true)
-  @override
-  $AuthorizeEventCopyWith<AuthorizeEvent> get copyWith =>
-      _$AuthorizeEventCopyWithImpl<AuthorizeEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Credentials credentials) login,
-    required TResult Function() register,
+    required TResult Function() login,
+    required TResult Function(String login) loginChanged,
+    required TResult Function(String password) passwordChanged,
   }) {
-    return login(credentials);
+    return login();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
   }) {
-    return login?.call(credentials);
+    return login?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(credentials);
+      return login();
     }
     return orElse();
   }
@@ -195,7 +175,8 @@ class _$AuthorizeEvent implements AuthorizeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthorizeEvent value) login,
-    required TResult Function(RegisterEvent value) register,
+    required TResult Function(LoginChangedEvent value) loginChanged,
+    required TResult Function(PasswordChangedEvent value) passwordChanged,
   }) {
     return login(this);
   }
@@ -204,7 +185,8 @@ class _$AuthorizeEvent implements AuthorizeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
   }) {
     return login?.call(this);
   }
@@ -213,7 +195,8 @@ class _$AuthorizeEvent implements AuthorizeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -224,77 +207,101 @@ class _$AuthorizeEvent implements AuthorizeEvent {
 }
 
 abstract class AuthorizeEvent implements LoginEvent {
-  const factory AuthorizeEvent(Credentials credentials) = _$AuthorizeEvent;
-
-  Credentials get credentials => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AuthorizeEventCopyWith<AuthorizeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory AuthorizeEvent() = _$AuthorizeEvent;
 }
 
 /// @nodoc
-abstract class $RegisterEventCopyWith<$Res> {
-  factory $RegisterEventCopyWith(
-          RegisterEvent value, $Res Function(RegisterEvent) then) =
-      _$RegisterEventCopyWithImpl<$Res>;
+abstract class $LoginChangedEventCopyWith<$Res> {
+  factory $LoginChangedEventCopyWith(
+          LoginChangedEvent value, $Res Function(LoginChangedEvent) then) =
+      _$LoginChangedEventCopyWithImpl<$Res>;
+  $Res call({String login});
 }
 
 /// @nodoc
-class _$RegisterEventCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements $RegisterEventCopyWith<$Res> {
-  _$RegisterEventCopyWithImpl(
-      RegisterEvent _value, $Res Function(RegisterEvent) _then)
-      : super(_value, (v) => _then(v as RegisterEvent));
+class _$LoginChangedEventCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res>
+    implements $LoginChangedEventCopyWith<$Res> {
+  _$LoginChangedEventCopyWithImpl(
+      LoginChangedEvent _value, $Res Function(LoginChangedEvent) _then)
+      : super(_value, (v) => _then(v as LoginChangedEvent));
 
   @override
-  RegisterEvent get _value => super._value as RegisterEvent;
+  LoginChangedEvent get _value => super._value as LoginChangedEvent;
+
+  @override
+  $Res call({
+    Object? login = freezed,
+  }) {
+    return _then(LoginChangedEvent(
+      login == freezed
+          ? _value.login
+          : login // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$RegisterEvent implements RegisterEvent {
-  const _$RegisterEvent();
+class _$LoginChangedEvent implements LoginChangedEvent {
+  const _$LoginChangedEvent(this.login);
+
+  @override
+  final String login;
 
   @override
   String toString() {
-    return 'LoginEvent.register()';
+    return 'LoginEvent.loginChanged(login: $login)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is RegisterEvent);
+    return identical(this, other) ||
+        (other is LoginChangedEvent &&
+            (identical(other.login, login) ||
+                const DeepCollectionEquality().equals(other.login, login)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(login);
+
+  @JsonKey(ignore: true)
+  @override
+  $LoginChangedEventCopyWith<LoginChangedEvent> get copyWith =>
+      _$LoginChangedEventCopyWithImpl<LoginChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Credentials credentials) login,
-    required TResult Function() register,
+    required TResult Function() login,
+    required TResult Function(String login) loginChanged,
+    required TResult Function(String password) passwordChanged,
   }) {
-    return register();
+    return loginChanged(this.login);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
   }) {
-    return register?.call();
+    return loginChanged?.call(this.login);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Credentials credentials)? login,
-    TResult Function()? register,
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
-    if (register != null) {
-      return register();
+    if (loginChanged != null) {
+      return loginChanged(this.login);
     }
     return orElse();
   }
@@ -303,36 +310,186 @@ class _$RegisterEvent implements RegisterEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthorizeEvent value) login,
-    required TResult Function(RegisterEvent value) register,
+    required TResult Function(LoginChangedEvent value) loginChanged,
+    required TResult Function(PasswordChangedEvent value) passwordChanged,
   }) {
-    return register(this);
+    return loginChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
   }) {
-    return register?.call(this);
+    return loginChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthorizeEvent value)? login,
-    TResult Function(RegisterEvent value)? register,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
     required TResult orElse(),
   }) {
-    if (register != null) {
-      return register(this);
+    if (loginChanged != null) {
+      return loginChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class RegisterEvent implements LoginEvent {
-  const factory RegisterEvent() = _$RegisterEvent;
+abstract class LoginChangedEvent implements LoginEvent {
+  const factory LoginChangedEvent(String login) = _$LoginChangedEvent;
+
+  String get login => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoginChangedEventCopyWith<LoginChangedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PasswordChangedEventCopyWith<$Res> {
+  factory $PasswordChangedEventCopyWith(PasswordChangedEvent value,
+          $Res Function(PasswordChangedEvent) then) =
+      _$PasswordChangedEventCopyWithImpl<$Res>;
+  $Res call({String password});
+}
+
+/// @nodoc
+class _$PasswordChangedEventCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res>
+    implements $PasswordChangedEventCopyWith<$Res> {
+  _$PasswordChangedEventCopyWithImpl(
+      PasswordChangedEvent _value, $Res Function(PasswordChangedEvent) _then)
+      : super(_value, (v) => _then(v as PasswordChangedEvent));
+
+  @override
+  PasswordChangedEvent get _value => super._value as PasswordChangedEvent;
+
+  @override
+  $Res call({
+    Object? password = freezed,
+  }) {
+    return _then(PasswordChangedEvent(
+      password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PasswordChangedEvent implements PasswordChangedEvent {
+  const _$PasswordChangedEvent(this.password);
+
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'LoginEvent.passwordChanged(password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is PasswordChangedEvent &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
+
+  @JsonKey(ignore: true)
+  @override
+  $PasswordChangedEventCopyWith<PasswordChangedEvent> get copyWith =>
+      _$PasswordChangedEventCopyWithImpl<PasswordChangedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() login,
+    required TResult Function(String login) loginChanged,
+    required TResult Function(String password) passwordChanged,
+  }) {
+    return passwordChanged(password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
+  }) {
+    return passwordChanged?.call(password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? login,
+    TResult Function(String login)? loginChanged,
+    TResult Function(String password)? passwordChanged,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthorizeEvent value) login,
+    required TResult Function(LoginChangedEvent value) loginChanged,
+    required TResult Function(PasswordChangedEvent value) passwordChanged,
+  }) {
+    return passwordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AuthorizeEvent value)? login,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
+  }) {
+    return passwordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthorizeEvent value)? login,
+    TResult Function(LoginChangedEvent value)? loginChanged,
+    TResult Function(PasswordChangedEvent value)? passwordChanged,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PasswordChangedEvent implements LoginEvent {
+  const factory PasswordChangedEvent(String password) = _$PasswordChangedEvent;
+
+  String get password => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PasswordChangedEventCopyWith<PasswordChangedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
