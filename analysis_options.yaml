@@ -1,0 +1,16 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+  language:
+    strict-inference: true
+    strict-raw-types: true
+  
+  exclude:
+    - lib/**.gr.dart
+    - lib/**.config.dart
+    - lib/**.freezed.dart
+    - lib/generated_plugin_registrant.dart
