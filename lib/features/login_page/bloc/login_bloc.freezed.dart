@@ -131,7 +131,8 @@ class _$AuthorizeEvent implements AuthorizeEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is AuthorizeEvent);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AuthorizeEvent);
   }
 
   @override
@@ -258,14 +259,13 @@ class _$LoginChangedEvent implements LoginChangedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginChangedEvent &&
-            (identical(other.login, login) ||
-                const DeepCollectionEquality().equals(other.login, login)));
+        (other.runtimeType == runtimeType &&
+            other is LoginChangedEvent &&
+            (identical(other.login, login) || other.login == login));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(login);
+  int get hashCode => Object.hash(runtimeType, login);
 
   @JsonKey(ignore: true)
   @override
@@ -344,7 +344,7 @@ class _$LoginChangedEvent implements LoginChangedEvent {
 abstract class LoginChangedEvent implements LoginEvent {
   const factory LoginChangedEvent(String login) = _$LoginChangedEvent;
 
-  String get login => throw _privateConstructorUsedError;
+  String get login;
   @JsonKey(ignore: true)
   $LoginChangedEventCopyWith<LoginChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -398,15 +398,14 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is PasswordChangedEvent &&
+        (other.runtimeType == runtimeType &&
+            other is PasswordChangedEvent &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                other.password == password));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
+  int get hashCode => Object.hash(runtimeType, password);
 
   @JsonKey(ignore: true)
   @override
@@ -486,7 +485,7 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
 abstract class PasswordChangedEvent implements LoginEvent {
   const factory PasswordChangedEvent(String password) = _$PasswordChangedEvent;
 
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @JsonKey(ignore: true)
   $PasswordChangedEventCopyWith<PasswordChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -586,7 +585,8 @@ class _$InitialState implements InitialState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InitialState);
   }
 
   @override

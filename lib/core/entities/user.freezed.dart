@@ -13,6 +13,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+User _$UserFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType'] as String?) {
+    case 'student':
+      return Student.fromJson(json);
+    case 'admin':
+      return Admin.fromJson(json);
+    case 'unauthorized':
+      return Unauthorized.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'User',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
@@ -23,8 +38,18 @@ class _$UserTearOff {
     );
   }
 
+  Admin admin({required Credentials credentials}) {
+    return Admin(
+      credentials: credentials,
+    );
+  }
+
   Unauthorized unauthorized() {
     return const Unauthorized();
+  }
+
+  User fromJson(Map<String, Object?> json) {
+    return User.fromJson(json);
   }
 }
 
@@ -36,18 +61,21 @@ mixin _$User {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Credentials credentials) student,
+    required TResult Function(Credentials credentials) admin,
     required TResult Function() unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
     required TResult orElse(),
   }) =>
@@ -55,22 +83,26 @@ mixin _$User {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Student value) student,
+    required TResult Function(Admin value) admin,
     required TResult Function(Unauthorized value) unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -127,9 +159,12 @@ class _$StudentCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Student implements Student {
   const _$Student({required this.credentials});
+
+  factory _$Student.fromJson(Map<String, dynamic> json) =>
+      _$$StudentFromJson(json);
 
   @override
   final Credentials credentials;
@@ -142,15 +177,14 @@ class _$Student implements Student {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Student &&
+        (other.runtimeType == runtimeType &&
+            other is Student &&
             (identical(other.credentials, credentials) ||
-                const DeepCollectionEquality()
-                    .equals(other.credentials, credentials)));
+                other.credentials == credentials));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(credentials);
+  int get hashCode => Object.hash(runtimeType, credentials);
 
   @JsonKey(ignore: true)
   @override
@@ -161,6 +195,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Credentials credentials) student,
+    required TResult Function(Credentials credentials) admin,
     required TResult Function() unauthorized,
   }) {
     return student(credentials);
@@ -170,6 +205,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
   }) {
     return student?.call(credentials);
@@ -179,6 +215,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
@@ -192,6 +229,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Student value) student,
+    required TResult Function(Admin value) admin,
     required TResult Function(Unauthorized value) unauthorized,
   }) {
     return student(this);
@@ -201,6 +239,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
   }) {
     return student?.call(this);
@@ -210,6 +249,7 @@ class _$Student implements Student {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
@@ -218,14 +258,175 @@ class _$Student implements Student {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StudentToJson(this)..['runtimeType'] = 'student';
+  }
 }
 
 abstract class Student implements User {
   const factory Student({required Credentials credentials}) = _$Student;
 
-  Credentials get credentials => throw _privateConstructorUsedError;
+  factory Student.fromJson(Map<String, dynamic> json) = _$Student.fromJson;
+
+  Credentials get credentials;
   @JsonKey(ignore: true)
   $StudentCopyWith<Student> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AdminCopyWith<$Res> {
+  factory $AdminCopyWith(Admin value, $Res Function(Admin) then) =
+      _$AdminCopyWithImpl<$Res>;
+  $Res call({Credentials credentials});
+
+  $CredentialsCopyWith<$Res> get credentials;
+}
+
+/// @nodoc
+class _$AdminCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements $AdminCopyWith<$Res> {
+  _$AdminCopyWithImpl(Admin _value, $Res Function(Admin) _then)
+      : super(_value, (v) => _then(v as Admin));
+
+  @override
+  Admin get _value => super._value as Admin;
+
+  @override
+  $Res call({
+    Object? credentials = freezed,
+  }) {
+    return _then(Admin(
+      credentials: credentials == freezed
+          ? _value.credentials
+          : credentials // ignore: cast_nullable_to_non_nullable
+              as Credentials,
+    ));
+  }
+
+  @override
+  $CredentialsCopyWith<$Res> get credentials {
+    return $CredentialsCopyWith<$Res>(_value.credentials, (value) {
+      return _then(_value.copyWith(credentials: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$Admin implements Admin {
+  const _$Admin({required this.credentials});
+
+  factory _$Admin.fromJson(Map<String, dynamic> json) => _$$AdminFromJson(json);
+
+  @override
+  final Credentials credentials;
+
+  @override
+  String toString() {
+    return 'User.admin(credentials: $credentials)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Admin &&
+            (identical(other.credentials, credentials) ||
+                other.credentials == credentials));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, credentials);
+
+  @JsonKey(ignore: true)
+  @override
+  $AdminCopyWith<Admin> get copyWith =>
+      _$AdminCopyWithImpl<Admin>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Credentials credentials) student,
+    required TResult Function(Credentials credentials) admin,
+    required TResult Function() unauthorized,
+  }) {
+    return admin(credentials);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
+    TResult Function()? unauthorized,
+  }) {
+    return admin?.call(credentials);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
+    TResult Function()? unauthorized,
+    required TResult orElse(),
+  }) {
+    if (admin != null) {
+      return admin(credentials);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Student value) student,
+    required TResult Function(Admin value) admin,
+    required TResult Function(Unauthorized value) unauthorized,
+  }) {
+    return admin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
+    TResult Function(Unauthorized value)? unauthorized,
+  }) {
+    return admin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
+    TResult Function(Unauthorized value)? unauthorized,
+    required TResult orElse(),
+  }) {
+    if (admin != null) {
+      return admin(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AdminToJson(this)..['runtimeType'] = 'admin';
+  }
+}
+
+abstract class Admin implements User {
+  const factory Admin({required Credentials credentials}) = _$Admin;
+
+  factory Admin.fromJson(Map<String, dynamic> json) = _$Admin.fromJson;
+
+  Credentials get credentials;
+  @JsonKey(ignore: true)
+  $AdminCopyWith<Admin> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -247,9 +448,12 @@ class _$UnauthorizedCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Unauthorized implements Unauthorized {
   const _$Unauthorized();
+
+  factory _$Unauthorized.fromJson(Map<String, dynamic> json) =>
+      _$$UnauthorizedFromJson(json);
 
   @override
   String toString() {
@@ -258,7 +462,8 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Unauthorized);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Unauthorized);
   }
 
   @override
@@ -268,6 +473,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Credentials credentials) student,
+    required TResult Function(Credentials credentials) admin,
     required TResult Function() unauthorized,
   }) {
     return unauthorized();
@@ -277,6 +483,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
   }) {
     return unauthorized?.call();
@@ -286,6 +493,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Credentials credentials)? student,
+    TResult Function(Credentials credentials)? admin,
     TResult Function()? unauthorized,
     required TResult orElse(),
   }) {
@@ -299,6 +507,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Student value) student,
+    required TResult Function(Admin value) admin,
     required TResult Function(Unauthorized value) unauthorized,
   }) {
     return unauthorized(this);
@@ -308,6 +517,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
   }) {
     return unauthorized?.call(this);
@@ -317,6 +527,7 @@ class _$Unauthorized implements Unauthorized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Student value)? student,
+    TResult Function(Admin value)? admin,
     TResult Function(Unauthorized value)? unauthorized,
     required TResult orElse(),
   }) {
@@ -325,10 +536,22 @@ class _$Unauthorized implements Unauthorized {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UnauthorizedToJson(this)..['runtimeType'] = 'unauthorized';
+  }
 }
 
 abstract class Unauthorized implements User {
   const factory Unauthorized() = _$Unauthorized;
+
+  factory Unauthorized.fromJson(Map<String, dynamic> json) =
+      _$Unauthorized.fromJson;
+}
+
+Credentials _$CredentialsFromJson(Map<String, dynamic> json) {
+  return _Credentials.fromJson(json);
 }
 
 /// @nodoc
@@ -341,6 +564,10 @@ class _$CredentialsTearOff {
       password: password,
     );
   }
+
+  Credentials fromJson(Map<String, Object?> json) {
+    return Credentials.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -351,6 +578,7 @@ mixin _$Credentials {
   String get login => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CredentialsCopyWith<Credentials> get copyWith =>
       throw _privateConstructorUsedError;
@@ -429,9 +657,12 @@ class __$CredentialsCopyWithImpl<$Res> extends _$CredentialsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Credentials implements _Credentials {
   const _$_Credentials({required this.login, required this.password});
+
+  factory _$_Credentials.fromJson(Map<String, dynamic> json) =>
+      _$$_CredentialsFromJson(json);
 
   @override
   final String login;
@@ -446,34 +677,38 @@ class _$_Credentials implements _Credentials {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Credentials &&
-            (identical(other.login, login) ||
-                const DeepCollectionEquality().equals(other.login, login)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Credentials &&
+            (identical(other.login, login) || other.login == login) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                other.password == password));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(login) ^
-      const DeepCollectionEquality().hash(password);
+  int get hashCode => Object.hash(runtimeType, login, password);
 
   @JsonKey(ignore: true)
   @override
   _$CredentialsCopyWith<_Credentials> get copyWith =>
       __$CredentialsCopyWithImpl<_Credentials>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CredentialsToJson(this);
+  }
 }
 
 abstract class _Credentials implements Credentials {
   const factory _Credentials(
       {required String login, required String password}) = _$_Credentials;
 
+  factory _Credentials.fromJson(Map<String, dynamic> json) =
+      _$_Credentials.fromJson;
+
   @override
-  String get login => throw _privateConstructorUsedError;
+  String get login;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$CredentialsCopyWith<_Credentials> get copyWith =>

@@ -1,17 +1,26 @@
 import 'package:injectable/injectable.dart';
 import 'package:kpi_schedule/core/entities/user.dart';
+import 'package:kpi_schedule/core/repositories/authorization_repository.dart';
 
 @lazySingleton
-class AuthService {
-  late User _currentUserState;
+class AuthorizationService {
+  final AuthorizationRepository _authorizationRepository;
 
-  AuthService() : _currentUserState = const User.unauthorized();
+  AuthorizationService(this._authorizationRepository);
 
-  User get authorizationState => _currentUserState;
+  Future<User> get authorizationState =>
+      _authorizationRepository.getUserState();
 
-  bool get isAuthorized => _currentUserState is! Unauthorized;
+  Future<bool> get isAuthorized async {
+    final userType = await authorizationState;
+    return userType is! Unauthorized;
+  }
 
-  void authorize(Credentials credentials) {
-    _currentUserState = Student(credentials: credentials);
+  Future<void> authorize(Credentials credentials) async {
+    await _authorizationRepository.authorize(credentials);
+  }
+
+  Future<void> unauthorize() async {
+    await _authorizationRepository.unauthorize();
   }
 }

@@ -32,7 +32,7 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig('/#redirect',
-            path: '/', redirectTo: '/login', fullMatch: true),
+            path: '/', redirectTo: '/schedule', fullMatch: true),
         RouteConfig(SchedulePageRoute.name,
             path: '/schedule', guards: [authGuard]),
         RouteConfig(LoginPageRoute.name, path: '/login')

@@ -20,6 +20,10 @@ class _$ScheduleEventTearOff {
   InitialScheduleEvent initial() {
     return const InitialScheduleEvent();
   }
+
+  LogoutScheduleEvent logout() {
+    return const LogoutScheduleEvent();
+  }
 }
 
 /// @nodoc
@@ -30,32 +34,38 @@ mixin _$ScheduleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
+    required TResult Function(LogoutScheduleEvent value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,7 +119,8 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialScheduleEvent);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InitialScheduleEvent);
   }
 
   @override
@@ -119,6 +130,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() logout,
   }) {
     return initial();
   }
@@ -127,6 +139,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? logout,
   }) {
     return initial?.call();
   }
@@ -135,6 +148,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -147,6 +161,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
+    required TResult Function(LogoutScheduleEvent value) logout,
   }) {
     return initial(this);
   }
@@ -155,6 +170,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +179,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -174,6 +191,111 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
 
 abstract class InitialScheduleEvent implements ScheduleEvent {
   const factory InitialScheduleEvent() = _$InitialScheduleEvent;
+}
+
+/// @nodoc
+abstract class $LogoutScheduleEventCopyWith<$Res> {
+  factory $LogoutScheduleEventCopyWith(
+          LogoutScheduleEvent value, $Res Function(LogoutScheduleEvent) then) =
+      _$LogoutScheduleEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$LogoutScheduleEventCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res>
+    implements $LogoutScheduleEventCopyWith<$Res> {
+  _$LogoutScheduleEventCopyWithImpl(
+      LogoutScheduleEvent _value, $Res Function(LogoutScheduleEvent) _then)
+      : super(_value, (v) => _then(v as LogoutScheduleEvent));
+
+  @override
+  LogoutScheduleEvent get _value => super._value as LogoutScheduleEvent;
+}
+
+/// @nodoc
+
+class _$LogoutScheduleEvent implements LogoutScheduleEvent {
+  const _$LogoutScheduleEvent();
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LogoutScheduleEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? logout,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialScheduleEvent value) initial,
+    required TResult Function(LogoutScheduleEvent value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(LogoutScheduleEvent value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LogoutScheduleEvent implements ScheduleEvent {
+  const factory LogoutScheduleEvent() = _$LogoutScheduleEvent;
 }
 
 /// @nodoc
@@ -294,7 +416,8 @@ class _$InitialScheduleState implements InitialScheduleState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialScheduleState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InitialScheduleState);
   }
 
   @override
@@ -404,7 +527,8 @@ class _$LoadingScheduleState implements LoadingScheduleState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoadingScheduleState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoadingScheduleState);
   }
 
   @override
@@ -540,14 +664,13 @@ class _$LoadedScheduleState implements LoadedScheduleState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoadedScheduleState &&
-            (identical(other.week, week) ||
-                const DeepCollectionEquality().equals(other.week, week)));
+        (other.runtimeType == runtimeType &&
+            other is LoadedScheduleState &&
+            (identical(other.week, week) || other.week == week));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(week);
+  int get hashCode => Object.hash(runtimeType, week);
 
   @JsonKey(ignore: true)
   @override
@@ -627,7 +750,7 @@ abstract class LoadedScheduleState implements ScheduleState {
   const factory LoadedScheduleState({required Week week}) =
       _$LoadedScheduleState;
 
-  Week get week => throw _privateConstructorUsedError;
+  Week get week;
   @JsonKey(ignore: true)
   $LoadedScheduleStateCopyWith<LoadedScheduleState> get copyWith =>
       throw _privateConstructorUsedError;

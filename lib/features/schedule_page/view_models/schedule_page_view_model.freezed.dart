@@ -13,6 +13,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Week _$WeekFromJson(Map<String, dynamic> json) {
+  return _Week.fromJson(json);
+}
+
 /// @nodoc
 class _$WeekTearOff {
   const _$WeekTearOff();
@@ -22,6 +26,10 @@ class _$WeekTearOff {
       title: title,
       days: days,
     );
+  }
+
+  Week fromJson(Map<String, Object?> json) {
+    return Week.fromJson(json);
   }
 }
 
@@ -33,6 +41,7 @@ mixin _$Week {
   String get title => throw _privateConstructorUsedError;
   List<Day> get days => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $WeekCopyWith<Week> get copyWith => throw _privateConstructorUsedError;
 }
@@ -106,9 +115,11 @@ class __$WeekCopyWithImpl<$Res> extends _$WeekCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Week implements _Week {
   const _$_Week({required this.title, required this.days});
+
+  factory _$_Week.fromJson(Map<String, dynamic> json) => _$$_WeekFromJson(json);
 
   @override
   final String title;
@@ -123,47 +134,59 @@ class _$_Week implements _Week {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Week &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.days, days) ||
-                const DeepCollectionEquality().equals(other.days, days)));
+        (other.runtimeType == runtimeType &&
+            other is _Week &&
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality().equals(other.days, days));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(days);
+  int get hashCode => Object.hash(
+      runtimeType, title, const DeepCollectionEquality().hash(days));
 
   @JsonKey(ignore: true)
   @override
   _$WeekCopyWith<_Week> get copyWith =>
       __$WeekCopyWithImpl<_Week>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WeekToJson(this);
+  }
 }
 
 abstract class _Week implements Week {
   const factory _Week({required String title, required List<Day> days}) =
       _$_Week;
 
+  factory _Week.fromJson(Map<String, dynamic> json) = _$_Week.fromJson;
+
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  List<Day> get days => throw _privateConstructorUsedError;
+  List<Day> get days;
   @override
   @JsonKey(ignore: true)
   _$WeekCopyWith<_Week> get copyWith => throw _privateConstructorUsedError;
+}
+
+Day _$DayFromJson(Map<String, dynamic> json) {
+  return _Day.fromJson(json);
 }
 
 /// @nodoc
 class _$DayTearOff {
   const _$DayTearOff();
 
-  _Day call({required Days day, required List<Lesson> lessons}) {
+  _Day call({required String day, required List<Lesson> lessons}) {
     return _Day(
       day: day,
       lessons: lessons,
     );
+  }
+
+  Day fromJson(Map<String, Object?> json) {
+    return Day.fromJson(json);
   }
 }
 
@@ -172,9 +195,10 @@ const $Day = _$DayTearOff();
 
 /// @nodoc
 mixin _$Day {
-  Days get day => throw _privateConstructorUsedError;
+  String get day => throw _privateConstructorUsedError;
   List<Lesson> get lessons => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DayCopyWith<Day> get copyWith => throw _privateConstructorUsedError;
 }
@@ -183,7 +207,7 @@ mixin _$Day {
 abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res>;
-  $Res call({Days day, List<Lesson> lessons});
+  $Res call({String day, List<Lesson> lessons});
 }
 
 /// @nodoc
@@ -203,7 +227,7 @@ class _$DayCopyWithImpl<$Res> implements $DayCopyWith<$Res> {
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
-              as Days,
+              as String,
       lessons: lessons == freezed
           ? _value.lessons
           : lessons // ignore: cast_nullable_to_non_nullable
@@ -217,7 +241,7 @@ abstract class _$DayCopyWith<$Res> implements $DayCopyWith<$Res> {
   factory _$DayCopyWith(_Day value, $Res Function(_Day) then) =
       __$DayCopyWithImpl<$Res>;
   @override
-  $Res call({Days day, List<Lesson> lessons});
+  $Res call({String day, List<Lesson> lessons});
 }
 
 /// @nodoc
@@ -238,7 +262,7 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
-              as Days,
+              as String,
       lessons: lessons == freezed
           ? _value.lessons
           : lessons // ignore: cast_nullable_to_non_nullable
@@ -248,12 +272,14 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Day implements _Day {
   const _$_Day({required this.day, required this.lessons});
 
+  factory _$_Day.fromJson(Map<String, dynamic> json) => _$$_DayFromJson(json);
+
   @override
-  final Days day;
+  final String day;
   @override
   final List<Lesson> lessons;
 
@@ -265,36 +291,44 @@ class _$_Day implements _Day {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Day &&
-            (identical(other.day, day) ||
-                const DeepCollectionEquality().equals(other.day, day)) &&
-            (identical(other.lessons, lessons) ||
-                const DeepCollectionEquality().equals(other.lessons, lessons)));
+        (other.runtimeType == runtimeType &&
+            other is _Day &&
+            (identical(other.day, day) || other.day == day) &&
+            const DeepCollectionEquality().equals(other.lessons, lessons));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(day) ^
-      const DeepCollectionEquality().hash(lessons);
+  int get hashCode => Object.hash(
+      runtimeType, day, const DeepCollectionEquality().hash(lessons));
 
   @JsonKey(ignore: true)
   @override
   _$DayCopyWith<_Day> get copyWith =>
       __$DayCopyWithImpl<_Day>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DayToJson(this);
+  }
 }
 
 abstract class _Day implements Day {
-  const factory _Day({required Days day, required List<Lesson> lessons}) =
+  const factory _Day({required String day, required List<Lesson> lessons}) =
       _$_Day;
 
+  factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
+
   @override
-  Days get day => throw _privateConstructorUsedError;
+  String get day;
   @override
-  List<Lesson> get lessons => throw _privateConstructorUsedError;
+  List<Lesson> get lessons;
   @override
   @JsonKey(ignore: true)
   _$DayCopyWith<_Day> get copyWith => throw _privateConstructorUsedError;
+}
+
+Lesson _$LessonFromJson(Map<String, dynamic> json) {
+  return _Lesson.fromJson(json);
 }
 
 /// @nodoc
@@ -303,8 +337,8 @@ class _$LessonTearOff {
 
   _Lesson call(
       {required String title,
-      required DateTime timeStart,
-      required DateTime timeEnd,
+      required String timeStart,
+      required String timeEnd,
       required List<Teacher> teachers,
       required List<Classroom> classrooms}) {
     return _Lesson(
@@ -315,6 +349,10 @@ class _$LessonTearOff {
       classrooms: classrooms,
     );
   }
+
+  Lesson fromJson(Map<String, Object?> json) {
+    return Lesson.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -323,11 +361,12 @@ const $Lesson = _$LessonTearOff();
 /// @nodoc
 mixin _$Lesson {
   String get title => throw _privateConstructorUsedError;
-  DateTime get timeStart => throw _privateConstructorUsedError;
-  DateTime get timeEnd => throw _privateConstructorUsedError;
+  String get timeStart => throw _privateConstructorUsedError;
+  String get timeEnd => throw _privateConstructorUsedError;
   List<Teacher> get teachers => throw _privateConstructorUsedError;
   List<Classroom> get classrooms => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
@@ -338,8 +377,8 @@ abstract class $LessonCopyWith<$Res> {
       _$LessonCopyWithImpl<$Res>;
   $Res call(
       {String title,
-      DateTime timeStart,
-      DateTime timeEnd,
+      String timeStart,
+      String timeEnd,
       List<Teacher> teachers,
       List<Classroom> classrooms});
 }
@@ -368,11 +407,11 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
       timeStart: timeStart == freezed
           ? _value.timeStart
           : timeStart // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       timeEnd: timeEnd == freezed
           ? _value.timeEnd
           : timeEnd // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       teachers: teachers == freezed
           ? _value.teachers
           : teachers // ignore: cast_nullable_to_non_nullable
@@ -392,8 +431,8 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @override
   $Res call(
       {String title,
-      DateTime timeStart,
-      DateTime timeEnd,
+      String timeStart,
+      String timeEnd,
       List<Teacher> teachers,
       List<Classroom> classrooms});
 }
@@ -423,11 +462,11 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
       timeStart: timeStart == freezed
           ? _value.timeStart
           : timeStart // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       timeEnd: timeEnd == freezed
           ? _value.timeEnd
           : timeEnd // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       teachers: teachers == freezed
           ? _value.teachers
           : teachers // ignore: cast_nullable_to_non_nullable
@@ -441,7 +480,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Lesson implements _Lesson {
   const _$_Lesson(
       {required this.title,
@@ -450,12 +489,15 @@ class _$_Lesson implements _Lesson {
       required this.teachers,
       required this.classrooms});
 
+  factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
+      _$$_LessonFromJson(json);
+
   @override
   final String title;
   @override
-  final DateTime timeStart;
+  final String timeStart;
   @override
-  final DateTime timeEnd;
+  final String timeEnd;
   @override
   final List<Teacher> teachers;
   @override
@@ -469,59 +511,64 @@ class _$_Lesson implements _Lesson {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Lesson &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Lesson &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.timeStart, timeStart) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeStart, timeStart)) &&
-            (identical(other.timeEnd, timeEnd) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeEnd, timeEnd)) &&
-            (identical(other.teachers, teachers) ||
-                const DeepCollectionEquality()
-                    .equals(other.teachers, teachers)) &&
-            (identical(other.classrooms, classrooms) ||
-                const DeepCollectionEquality()
-                    .equals(other.classrooms, classrooms)));
+                other.timeStart == timeStart) &&
+            (identical(other.timeEnd, timeEnd) || other.timeEnd == timeEnd) &&
+            const DeepCollectionEquality().equals(other.teachers, teachers) &&
+            const DeepCollectionEquality()
+                .equals(other.classrooms, classrooms));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(timeStart) ^
-      const DeepCollectionEquality().hash(timeEnd) ^
-      const DeepCollectionEquality().hash(teachers) ^
-      const DeepCollectionEquality().hash(classrooms);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      timeStart,
+      timeEnd,
+      const DeepCollectionEquality().hash(teachers),
+      const DeepCollectionEquality().hash(classrooms));
 
   @JsonKey(ignore: true)
   @override
   _$LessonCopyWith<_Lesson> get copyWith =>
       __$LessonCopyWithImpl<_Lesson>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LessonToJson(this);
+  }
 }
 
 abstract class _Lesson implements Lesson {
   const factory _Lesson(
       {required String title,
-      required DateTime timeStart,
-      required DateTime timeEnd,
+      required String timeStart,
+      required String timeEnd,
       required List<Teacher> teachers,
       required List<Classroom> classrooms}) = _$_Lesson;
 
+  factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
+
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  DateTime get timeStart => throw _privateConstructorUsedError;
+  String get timeStart;
   @override
-  DateTime get timeEnd => throw _privateConstructorUsedError;
+  String get timeEnd;
   @override
-  List<Teacher> get teachers => throw _privateConstructorUsedError;
+  List<Teacher> get teachers;
   @override
-  List<Classroom> get classrooms => throw _privateConstructorUsedError;
+  List<Classroom> get classrooms;
   @override
   @JsonKey(ignore: true)
   _$LessonCopyWith<_Lesson> get copyWith => throw _privateConstructorUsedError;
+}
+
+Teacher _$TeacherFromJson(Map<String, dynamic> json) {
+  return _Teacher.fromJson(json);
 }
 
 /// @nodoc
@@ -534,6 +581,10 @@ class _$TeacherTearOff {
       entitlement: entitlement,
     );
   }
+
+  Teacher fromJson(Map<String, Object?> json) {
+    return Teacher.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -544,6 +595,7 @@ mixin _$Teacher {
   String get name => throw _privateConstructorUsedError;
   String get entitlement => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TeacherCopyWith<Teacher> get copyWith => throw _privateConstructorUsedError;
 }
@@ -617,9 +669,12 @@ class __$TeacherCopyWithImpl<$Res> extends _$TeacherCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Teacher implements _Teacher {
   const _$_Teacher({required this.name, required this.entitlement});
+
+  factory _$_Teacher.fromJson(Map<String, dynamic> json) =>
+      _$$_TeacherFromJson(json);
 
   @override
   final String name;
@@ -634,38 +689,45 @@ class _$_Teacher implements _Teacher {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Teacher &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Teacher &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.entitlement, entitlement) ||
-                const DeepCollectionEquality()
-                    .equals(other.entitlement, entitlement)));
+                other.entitlement == entitlement));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(entitlement);
+  int get hashCode => Object.hash(runtimeType, name, entitlement);
 
   @JsonKey(ignore: true)
   @override
   _$TeacherCopyWith<_Teacher> get copyWith =>
       __$TeacherCopyWithImpl<_Teacher>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TeacherToJson(this);
+  }
 }
 
 abstract class _Teacher implements Teacher {
   const factory _Teacher({required String name, required String entitlement}) =
       _$_Teacher;
 
+  factory _Teacher.fromJson(Map<String, dynamic> json) = _$_Teacher.fromJson;
+
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get entitlement => throw _privateConstructorUsedError;
+  String get entitlement;
   @override
   @JsonKey(ignore: true)
   _$TeacherCopyWith<_Teacher> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+Classroom _$ClassroomFromJson(Map<String, dynamic> json) {
+  return _Classroom.fromJson(json);
 }
 
 /// @nodoc
@@ -677,6 +739,10 @@ class _$ClassroomTearOff {
       number: number,
     );
   }
+
+  Classroom fromJson(Map<String, Object?> json) {
+    return Classroom.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -686,6 +752,7 @@ const $Classroom = _$ClassroomTearOff();
 mixin _$Classroom {
   String get number => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ClassroomCopyWith<Classroom> get copyWith =>
       throw _privateConstructorUsedError;
@@ -751,9 +818,12 @@ class __$ClassroomCopyWithImpl<$Res> extends _$ClassroomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Classroom implements _Classroom {
   const _$_Classroom({required this.number});
+
+  factory _$_Classroom.fromJson(Map<String, dynamic> json) =>
+      _$$_ClassroomFromJson(json);
 
   @override
   final String number;
@@ -766,26 +836,33 @@ class _$_Classroom implements _Classroom {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Classroom &&
-            (identical(other.number, number) ||
-                const DeepCollectionEquality().equals(other.number, number)));
+        (other.runtimeType == runtimeType &&
+            other is _Classroom &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(number);
+  int get hashCode => Object.hash(runtimeType, number);
 
   @JsonKey(ignore: true)
   @override
   _$ClassroomCopyWith<_Classroom> get copyWith =>
       __$ClassroomCopyWithImpl<_Classroom>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ClassroomToJson(this);
+  }
 }
 
 abstract class _Classroom implements Classroom {
   const factory _Classroom({required String number}) = _$_Classroom;
 
+  factory _Classroom.fromJson(Map<String, dynamic> json) =
+      _$_Classroom.fromJson;
+
   @override
-  String get number => throw _privateConstructorUsedError;
+  String get number;
   @override
   @JsonKey(ignore: true)
   _$ClassroomCopyWith<_Classroom> get copyWith =>

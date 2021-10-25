@@ -13,7 +13,7 @@ part 'login_bloc.freezed.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthService _authService;
+  final AuthorizationService _authService;
   final TextEditingService _textEditingService;
 
   LoginBloc(this._authService, this._textEditingService)

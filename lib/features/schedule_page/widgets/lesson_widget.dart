@@ -47,14 +47,14 @@ class LessonWidget extends StatelessWidget {
                     softWrap: false,
                     overflow: TextOverflow.fade,
                   ),
-                  const ShortVerticalSpacer(),
+                  const SmallVerticalSpacer(),
                   Text(
                     mapper.mapClassrooms(lesson.classrooms),
                     maxLines: 1,
                     softWrap: false,
                     overflow: TextOverflow.fade,
                   ),
-                  const ShortVerticalSpacer(),
+                  const SmallVerticalSpacer(),
                   Text(
                     mapper.mapTeachers(lesson.teachers),
                     maxLines: 1,

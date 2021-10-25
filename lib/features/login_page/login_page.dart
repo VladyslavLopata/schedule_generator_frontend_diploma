@@ -25,13 +25,13 @@ class LoginPage extends StatelessWidget {
                     onChanged: (login) =>
                         loginBloc.add(LoginChangedEvent(login)),
                   ),
-                  const ShortVerticalSpacer(),
+                  const SmallVerticalSpacer(),
                   TextField(
                     onChanged: (password) =>
                         loginBloc.add(PasswordChangedEvent(password)),
                     obscureText: true,
                   ),
-                  const ShortVerticalSpacer(),
+                  const SmallVerticalSpacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

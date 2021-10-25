@@ -3,6 +3,7 @@ import 'package:kpi_schedule/core/di/di.dart';
 import 'package:kpi_schedule/core/router/app_router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   initDependencies();
   runApp(const MyApp());
 }

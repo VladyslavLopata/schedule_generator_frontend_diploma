@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ShortVerticalSpacer extends StatelessWidget {
-  const ShortVerticalSpacer({Key? key}) : super(key: key);
+class SmallVerticalSpacer extends StatelessWidget {
+  const SmallVerticalSpacer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

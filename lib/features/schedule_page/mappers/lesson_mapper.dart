@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 import 'package:kpi_schedule/features/schedule_page/view_models/schedule_page_view_model.dart';
 
 @injectable
@@ -34,12 +33,7 @@ class LessonMapper {
     return teachers.map(_teacherToString).join(', ');
   }
 
-  String mapTime(DateTime start, DateTime end) {
-    final formatter = DateFormat.Hm();
-
-    final startFormatted = formatter.format(start);
-    final endFormatted = formatter.format(end);
-
-    return '$startFormatted - $endFormatted';
+  String mapTime(String start, String end) {
+    return '$start - $end';
   }
 }

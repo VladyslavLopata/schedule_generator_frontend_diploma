@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
+part 'user.g.dart';
 
 @freezed
 class User with _$User {
@@ -8,7 +9,13 @@ class User with _$User {
     required Credentials credentials,
   }) = Student;
 
+  const factory User.admin({
+    required Credentials credentials,
+  }) = Admin;
+
   const factory User.unauthorized() = Unauthorized;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
 
 @freezed
@@ -17,4 +24,7 @@ class Credentials with _$Credentials {
     required String login,
     required String password,
   }) = _Credentials;
+
+  factory Credentials.fromJson(Map<String, dynamic> json) =>
+      _$CredentialsFromJson(json);
 }

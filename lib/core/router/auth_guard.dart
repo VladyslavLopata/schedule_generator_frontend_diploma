@@ -6,16 +6,20 @@ import 'package:kpi_schedule/core/services/authorization_service.dart';
 
 @lazySingleton
 class AuthGuard extends AutoRouteGuard {
-  final AuthService _authService;
+  final AuthorizationService _authService;
 
   AuthGuard(this._authService);
 
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (_authService.isAuthorized) {
+  Future<void> onNavigation(
+    NavigationResolver resolver,
+    StackRouter router,
+  ) async {
+    final isAuthorized = await _authService.isAuthorized;
+    if (isAuthorized) {
       resolver.next();
     } else {
-      router.pushNamed(loginRoute);
+      router.replaceNamed(loginRoute);
     }
   }
 }

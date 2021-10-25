@@ -9,7 +9,7 @@ class DayMapper {
   List<Widget> mapLessons(List<Lesson> lessons) {
     return lessons
         .map((lesson) => LessonWidget(lesson: lesson))
-        .expand((element) => [element, const ShortVerticalSpacer()])
+        .expand((element) => [element, const SmallVerticalSpacer()])
         .toList();
   }
 }

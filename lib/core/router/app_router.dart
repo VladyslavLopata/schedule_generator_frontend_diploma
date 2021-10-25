@@ -13,12 +13,12 @@ part 'app_router.gr.dart';
   routes: [
     AutoRoute<SchedulePage>(
       page: SchedulePage,
+      initial: true,
       path: scheduleRoute,
       guards: [AuthGuard],
     ),
     AutoRoute<LoginPage>(
       page: LoginPage,
-      initial: true,
       path: loginRoute,
     ),
   ],

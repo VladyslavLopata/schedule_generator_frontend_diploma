@@ -1,0 +1,79 @@
+{
+    "title": "Перший тиждень",
+    "days": [
+        {
+            "day": "monday",
+            "lessons": [
+                {
+                    "timeStart": "15:00",
+                    "timeEnd": "16:30",
+                    "title": "Tempor et duo ipsum voluptua.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Justo diam."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "200"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": "17:00",
+                    "timeEnd": "18:30",
+                    "title": "Amet stet invidunt erat.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Euch der widerklang."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "201"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "day": "tuesday",
+            "lessons": [
+                {
+                    "timeStart": "12:00",
+                    "timeEnd": "13:30",
+                    "title": "Tempor et duo ipsum voluptua.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Justo diam."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "205"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": "13:30",
+                    "timeEnd": "15:00",
+                    "title": "No rebum erat no sed sed.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Nonumy magna."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "307"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
