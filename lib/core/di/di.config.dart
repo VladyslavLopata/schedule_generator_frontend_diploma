@@ -11,12 +11,13 @@ import '../../features/lesson_addition_page/bloc/lesson_addition_bloc.dart'
     as _i6;
 import '../../features/login_page/bloc/login_bloc.dart' as _i15;
 import '../../features/login_page/services/text_editing_service.dart' as _i11;
-import '../../features/schedule_page/bloc/schedule_bloc.dart' as _i16;
+import '../../features/schedule_page/bloc/schedule_bloc.dart' as _i18;
 import '../../features/schedule_page/mappers/day_mapper.dart' as _i4;
 import '../../features/schedule_page/mappers/lesson_mapper.dart' as _i7;
 import '../../features/schedule_page/mappers/week_mapper.dart' as _i12;
 import '../../features/schedule_page/repositories/schedule_repository.dart'
     as _i9;
+import '../../features/schedule_page/services/schedule_service.dart' as _i16;
 import '../../features/schedule_page/utils/state_untils.dart' as _i10;
 import '../repositories/authorization_repository.dart' as _i13;
 import '../router/app_router.dart' as _i3;
@@ -50,12 +51,14 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i14.AuthorizationService(get<_i13.AuthorizationRepository>()));
   gh.factory<_i15.LoginBloc>(() => _i15.LoginBloc(
       get<_i14.AuthorizationService>(), get<_i11.TextEditingService>()));
-  gh.factory<_i16.ScheduleBloc>(() => _i16.ScheduleBloc(
+  gh.factory<_i16.ScheduleService>(() => _i16.ScheduleService(
       get<_i9.ScheduleRepository>(),
-      get<_i3.AppRouter>(),
-      get<_i14.AuthorizationService>()));
+      get<_i14.AuthorizationService>(),
+      get<_i3.AppRouter>()));
   gh.lazySingleton<_i17.AuthGuard>(
       () => _i17.AuthGuard(get<_i14.AuthorizationService>()));
+  gh.factory<_i18.ScheduleBloc>(
+      () => _i18.ScheduleBloc(get<_i16.ScheduleService>()));
   return get;
 }
 

@@ -21,8 +21,10 @@ class _$ScheduleEventTearOff {
     return const InitialScheduleEvent();
   }
 
-  LogoutScheduleEvent logout() {
-    return const LogoutScheduleEvent();
+  CompleteActionScheduleEvent completeAction({required ActionModel action}) {
+    return CompleteActionScheduleEvent(
+      action: action,
+    );
   }
 }
 
@@ -34,38 +36,38 @@ mixin _$ScheduleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() logout,
+    required TResult Function(ActionModel action) completeAction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
-    required TResult Function(LogoutScheduleEvent value) logout,
+    required TResult Function(CompleteActionScheduleEvent value) completeAction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,7 +132,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() logout,
+    required TResult Function(ActionModel action) completeAction,
   }) {
     return initial();
   }
@@ -139,7 +141,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
   }) {
     return initial?.call();
   }
@@ -148,7 +150,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -161,7 +163,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
-    required TResult Function(LogoutScheduleEvent value) logout,
+    required TResult Function(CompleteActionScheduleEvent value) completeAction,
   }) {
     return initial(this);
   }
@@ -170,7 +172,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
   }) {
     return initial?.call(this);
   }
@@ -179,7 +181,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -194,70 +196,105 @@ abstract class InitialScheduleEvent implements ScheduleEvent {
 }
 
 /// @nodoc
-abstract class $LogoutScheduleEventCopyWith<$Res> {
-  factory $LogoutScheduleEventCopyWith(
-          LogoutScheduleEvent value, $Res Function(LogoutScheduleEvent) then) =
-      _$LogoutScheduleEventCopyWithImpl<$Res>;
+abstract class $CompleteActionScheduleEventCopyWith<$Res> {
+  factory $CompleteActionScheduleEventCopyWith(
+          CompleteActionScheduleEvent value,
+          $Res Function(CompleteActionScheduleEvent) then) =
+      _$CompleteActionScheduleEventCopyWithImpl<$Res>;
+  $Res call({ActionModel action});
+
+  $ActionModelCopyWith<$Res> get action;
 }
 
 /// @nodoc
-class _$LogoutScheduleEventCopyWithImpl<$Res>
+class _$CompleteActionScheduleEventCopyWithImpl<$Res>
     extends _$ScheduleEventCopyWithImpl<$Res>
-    implements $LogoutScheduleEventCopyWith<$Res> {
-  _$LogoutScheduleEventCopyWithImpl(
-      LogoutScheduleEvent _value, $Res Function(LogoutScheduleEvent) _then)
-      : super(_value, (v) => _then(v as LogoutScheduleEvent));
+    implements $CompleteActionScheduleEventCopyWith<$Res> {
+  _$CompleteActionScheduleEventCopyWithImpl(CompleteActionScheduleEvent _value,
+      $Res Function(CompleteActionScheduleEvent) _then)
+      : super(_value, (v) => _then(v as CompleteActionScheduleEvent));
 
   @override
-  LogoutScheduleEvent get _value => super._value as LogoutScheduleEvent;
+  CompleteActionScheduleEvent get _value =>
+      super._value as CompleteActionScheduleEvent;
+
+  @override
+  $Res call({
+    Object? action = freezed,
+  }) {
+    return _then(CompleteActionScheduleEvent(
+      action: action == freezed
+          ? _value.action
+          : action // ignore: cast_nullable_to_non_nullable
+              as ActionModel,
+    ));
+  }
+
+  @override
+  $ActionModelCopyWith<$Res> get action {
+    return $ActionModelCopyWith<$Res>(_value.action, (value) {
+      return _then(_value.copyWith(action: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$LogoutScheduleEvent implements LogoutScheduleEvent {
-  const _$LogoutScheduleEvent();
+class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
+  const _$CompleteActionScheduleEvent({required this.action});
+
+  @override
+  final ActionModel action;
 
   @override
   String toString() {
-    return 'ScheduleEvent.logout()';
+    return 'ScheduleEvent.completeAction(action: $action)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LogoutScheduleEvent);
+        (other.runtimeType == runtimeType &&
+            other is CompleteActionScheduleEvent &&
+            (identical(other.action, action) || other.action == action));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, action);
+
+  @JsonKey(ignore: true)
+  @override
+  $CompleteActionScheduleEventCopyWith<CompleteActionScheduleEvent>
+      get copyWith => _$CompleteActionScheduleEventCopyWithImpl<
+          CompleteActionScheduleEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() logout,
+    required TResult Function(ActionModel action) completeAction,
   }) {
-    return logout();
+    return completeAction(action);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
   }) {
-    return logout?.call();
+    return completeAction?.call(action);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? logout,
+    TResult Function(ActionModel action)? completeAction,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout();
+    if (completeAction != null) {
+      return completeAction(action);
     }
     return orElse();
   }
@@ -266,36 +303,42 @@ class _$LogoutScheduleEvent implements LogoutScheduleEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
-    required TResult Function(LogoutScheduleEvent value) logout,
+    required TResult Function(CompleteActionScheduleEvent value) completeAction,
   }) {
-    return logout(this);
+    return completeAction(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
   }) {
-    return logout?.call(this);
+    return completeAction?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
-    TResult Function(LogoutScheduleEvent value)? logout,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout(this);
+    if (completeAction != null) {
+      return completeAction(this);
     }
     return orElse();
   }
 }
 
-abstract class LogoutScheduleEvent implements ScheduleEvent {
-  const factory LogoutScheduleEvent() = _$LogoutScheduleEvent;
+abstract class CompleteActionScheduleEvent implements ScheduleEvent {
+  const factory CompleteActionScheduleEvent({required ActionModel action}) =
+      _$CompleteActionScheduleEvent;
+
+  ActionModel get action;
+  @JsonKey(ignore: true)
+  $CompleteActionScheduleEventCopyWith<CompleteActionScheduleEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -310,9 +353,9 @@ class _$ScheduleStateTearOff {
     return const LoadingScheduleState();
   }
 
-  LoadedScheduleState loaded({required Week week}) {
+  LoadedScheduleState loaded({required SchedulePageViewModel viewModel}) {
     return LoadedScheduleState(
-      week: week,
+      viewModel: viewModel,
     );
   }
 }
@@ -326,21 +369,21 @@ mixin _$ScheduleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Week week) loaded,
+    required TResult Function(SchedulePageViewModel viewModel) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -428,7 +471,7 @@ class _$InitialScheduleState implements InitialScheduleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Week week) loaded,
+    required TResult Function(SchedulePageViewModel viewModel) loaded,
   }) {
     return initial();
   }
@@ -438,7 +481,7 @@ class _$InitialScheduleState implements InitialScheduleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
   }) {
     return initial?.call();
   }
@@ -448,7 +491,7 @@ class _$InitialScheduleState implements InitialScheduleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -539,7 +582,7 @@ class _$LoadingScheduleState implements LoadingScheduleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Week week) loaded,
+    required TResult Function(SchedulePageViewModel viewModel) loaded,
   }) {
     return loading();
   }
@@ -549,7 +592,7 @@ class _$LoadingScheduleState implements LoadingScheduleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
   }) {
     return loading?.call();
   }
@@ -559,7 +602,7 @@ class _$LoadingScheduleState implements LoadingScheduleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -612,9 +655,9 @@ abstract class $LoadedScheduleStateCopyWith<$Res> {
   factory $LoadedScheduleStateCopyWith(
           LoadedScheduleState value, $Res Function(LoadedScheduleState) then) =
       _$LoadedScheduleStateCopyWithImpl<$Res>;
-  $Res call({Week week});
+  $Res call({SchedulePageViewModel viewModel});
 
-  $WeekCopyWith<$Res> get week;
+  $SchedulePageViewModelCopyWith<$Res> get viewModel;
 }
 
 /// @nodoc
@@ -630,20 +673,20 @@ class _$LoadedScheduleStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? week = freezed,
+    Object? viewModel = freezed,
   }) {
     return _then(LoadedScheduleState(
-      week: week == freezed
-          ? _value.week
-          : week // ignore: cast_nullable_to_non_nullable
-              as Week,
+      viewModel: viewModel == freezed
+          ? _value.viewModel
+          : viewModel // ignore: cast_nullable_to_non_nullable
+              as SchedulePageViewModel,
     ));
   }
 
   @override
-  $WeekCopyWith<$Res> get week {
-    return $WeekCopyWith<$Res>(_value.week, (value) {
-      return _then(_value.copyWith(week: value));
+  $SchedulePageViewModelCopyWith<$Res> get viewModel {
+    return $SchedulePageViewModelCopyWith<$Res>(_value.viewModel, (value) {
+      return _then(_value.copyWith(viewModel: value));
     });
   }
 }
@@ -651,14 +694,14 @@ class _$LoadedScheduleStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedScheduleState implements LoadedScheduleState {
-  const _$LoadedScheduleState({required this.week});
+  const _$LoadedScheduleState({required this.viewModel});
 
   @override
-  final Week week;
+  final SchedulePageViewModel viewModel;
 
   @override
   String toString() {
-    return 'ScheduleState.loaded(week: $week)';
+    return 'ScheduleState.loaded(viewModel: $viewModel)';
   }
 
   @override
@@ -666,11 +709,12 @@ class _$LoadedScheduleState implements LoadedScheduleState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is LoadedScheduleState &&
-            (identical(other.week, week) || other.week == week));
+            (identical(other.viewModel, viewModel) ||
+                other.viewModel == viewModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, week);
+  int get hashCode => Object.hash(runtimeType, viewModel);
 
   @JsonKey(ignore: true)
   @override
@@ -682,9 +726,9 @@ class _$LoadedScheduleState implements LoadedScheduleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Week week) loaded,
+    required TResult Function(SchedulePageViewModel viewModel) loaded,
   }) {
-    return loaded(week);
+    return loaded(viewModel);
   }
 
   @override
@@ -692,9 +736,9 @@ class _$LoadedScheduleState implements LoadedScheduleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
   }) {
-    return loaded?.call(week);
+    return loaded?.call(viewModel);
   }
 
   @override
@@ -702,11 +746,11 @@ class _$LoadedScheduleState implements LoadedScheduleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Week week)? loaded,
+    TResult Function(SchedulePageViewModel viewModel)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(week);
+      return loaded(viewModel);
     }
     return orElse();
   }
@@ -747,10 +791,10 @@ class _$LoadedScheduleState implements LoadedScheduleState {
 }
 
 abstract class LoadedScheduleState implements ScheduleState {
-  const factory LoadedScheduleState({required Week week}) =
-      _$LoadedScheduleState;
+  const factory LoadedScheduleState(
+      {required SchedulePageViewModel viewModel}) = _$LoadedScheduleState;
 
-  Week get week;
+  SchedulePageViewModel get viewModel;
   @JsonKey(ignore: true)
   $LoadedScheduleStateCopyWith<LoadedScheduleState> get copyWith =>
       throw _privateConstructorUsedError;

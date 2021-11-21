@@ -1,7 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kpi_schedule/features/schedule_page/view_models/action_model.dart';
 
 part 'schedule_page_view_model.g.dart';
 part 'schedule_page_view_model.freezed.dart';
+
+@freezed
+class SchedulePageViewModel with _$SchedulePageViewModel {
+  const factory SchedulePageViewModel({
+    required Week week,
+    required List<ActionModel> actions,
+  }) = _SchedulePageViewModel;
+}
 
 @freezed
 class Week with _$Week {
@@ -22,7 +31,7 @@ class Day with _$Day {
   factory Day.fromJson(Map<String, dynamic> json) => _$DayFromJson(json);
 }
 
-@freezed
+@Freezed(unionKey: 'type')
 class Lesson with _$Lesson {
   const factory Lesson({
     required String title,

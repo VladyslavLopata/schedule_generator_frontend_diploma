@@ -26,10 +26,11 @@ class AuthorizationFakeRepository implements AuthorizationRepository {
   Future<User> getUserState() async {
     final currentUserJson = await _localStorageService.retrieveMap(userKey);
 
-    if (currentUserJson != null) {
-      return User.fromJson(currentUserJson);
-    }
-
+    try {
+      if (currentUserJson != null) {
+        return User.fromJson(currentUserJson);
+      }
+    } catch (e) {}
     return const User.unauthorized();
   }
 

@@ -74,6 +74,117 @@
                     ]
                 }
             ]
+        },
+        {
+            "day": "wednesday",
+            "lessons": [
+                {
+                    "timeStart": "12:00",
+                    "timeEnd": "13:30",
+                    "title": "Tempor et duo ipsum voluptua.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Justo diam."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "205"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": "13:30",
+                    "timeEnd": "15:00",
+                    "title": "No rebum erat no sed sed.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Nonumy magna."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "307"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "day": "thursday",
+            "lessons": [
+                {
+                    "timeStart": "12:00",
+                    "timeEnd": "13:30",
+                    "title": "Tempor et duo ipsum voluptua.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Justo diam."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "205"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": "13:30",
+                    "timeEnd": "15:00",
+                    "title": "No rebum erat no sed sed.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Nonumy magna."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "307"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "day": "friday",
+            "lessons": [
+                {
+                    "timeStart": "12:00",
+                    "timeEnd": "13:30",
+                    "title": "Tempor et duo ipsum voluptua.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Justo diam."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "205"
+                        }
+                    ]
+                },
+                {
+                    "timeStart": "13:30",
+                    "timeEnd": "15:00",
+                    "title": "No rebum erat no sed sed.",
+                    "teachers": [
+                        {
+                            "entitlement": "Prof.",
+                            "name": "Nonumy magna."
+                        }
+                    ],
+                    "classrooms": [
+                        {
+                            "number": "307"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
