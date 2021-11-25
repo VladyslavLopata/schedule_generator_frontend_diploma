@@ -16,8 +16,11 @@ class StateUtils {
     return const Loader();
   }
 
-  Widget buildLoadedState(Week week) {
-    return WeekWidget(week: week);
+  Widget buildLoadedState(SchedulePageViewModel viewModel) {
+    return WeekWidget(
+      week: viewModel.week,
+      actions: viewModel.actions,
+    );
   }
 
   ScheduleBloc initScheduleBloc() {

@@ -26,6 +26,12 @@ class _$AppRouter extends RootStackRouter {
     LoginPageRoute.name: (routeData) {
       return MaterialPageX<LoginPage>(
           routeData: routeData, child: const LoginPage());
+    },
+    LessonAdditionPageRoute.name: (routeData) {
+      final args = routeData.argsAs<LessonAdditionPageRouteArgs>();
+      return MaterialPageX<LessonAdditionPage>(
+          routeData: routeData,
+          child: LessonAdditionPage(key: args.key, lesson: args.lesson));
     }
   };
 
@@ -35,7 +41,8 @@ class _$AppRouter extends RootStackRouter {
             path: '/', redirectTo: '/schedule', fullMatch: true),
         RouteConfig(SchedulePageRoute.name,
             path: '/schedule', guards: [authGuard]),
-        RouteConfig(LoginPageRoute.name, path: '/login')
+        RouteConfig(LoginPageRoute.name, path: '/login'),
+        RouteConfig(LessonAdditionPageRoute.name, path: '/edit')
       ];
 }
 
@@ -51,4 +58,23 @@ class LoginPageRoute extends PageRouteInfo<void> {
   const LoginPageRoute() : super(name, path: '/login');
 
   static const String name = 'LoginPageRoute';
+}
+
+/// generated route for [LessonAdditionPage]
+class LessonAdditionPageRoute
+    extends PageRouteInfo<LessonAdditionPageRouteArgs> {
+  LessonAdditionPageRoute({Key? key, required Lesson lesson})
+      : super(name,
+            path: '/edit',
+            args: LessonAdditionPageRouteArgs(key: key, lesson: lesson));
+
+  static const String name = 'LessonAdditionPageRoute';
+}
+
+class LessonAdditionPageRouteArgs {
+  const LessonAdditionPageRouteArgs({this.key, required this.lesson});
+
+  final Key? key;
+
+  final Lesson lesson;
 }

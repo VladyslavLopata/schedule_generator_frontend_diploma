@@ -4,6 +4,10 @@ import 'package:kpi_schedule/core/di/di.dart';
 import 'package:kpi_schedule/core/widgets/spacers.dart';
 import 'package:kpi_schedule/features/login_page/bloc/login_bloc.dart';
 
+const emailHint = 'Email';
+const passwordHint = 'Пароль';
+const loginButtonText = 'Увійти';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -24,12 +28,14 @@ class LoginPage extends StatelessWidget {
                   TextField(
                     onChanged: (login) =>
                         loginBloc.add(LoginChangedEvent(login)),
+                    decoration: const InputDecoration(hintText: emailHint),
                   ),
                   const SmallVerticalSpacer(),
                   TextField(
                     onChanged: (password) =>
                         loginBloc.add(PasswordChangedEvent(password)),
                     obscureText: true,
+                    decoration: const InputDecoration(hintText: passwordHint),
                   ),
                   const SmallVerticalSpacer(),
                   Row(
@@ -39,7 +45,7 @@ class LoginPage extends StatelessWidget {
                         onPressed: () => loginBloc.add(
                           const AuthorizeEvent(),
                         ),
-                        child: const Text('Увійти'),
+                        child: const Text(loginButtonText),
                       ),
                     ],
                   )

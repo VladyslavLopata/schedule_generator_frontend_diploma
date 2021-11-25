@@ -13,6 +13,168 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+/// @nodoc
+class _$SchedulePageViewModelTearOff {
+  const _$SchedulePageViewModelTearOff();
+
+  _SchedulePageViewModel call(
+      {required Week week, required List<ActionModel> actions}) {
+    return _SchedulePageViewModel(
+      week: week,
+      actions: actions,
+    );
+  }
+}
+
+/// @nodoc
+const $SchedulePageViewModel = _$SchedulePageViewModelTearOff();
+
+/// @nodoc
+mixin _$SchedulePageViewModel {
+  Week get week => throw _privateConstructorUsedError;
+  List<ActionModel> get actions => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SchedulePageViewModelCopyWith<SchedulePageViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SchedulePageViewModelCopyWith<$Res> {
+  factory $SchedulePageViewModelCopyWith(SchedulePageViewModel value,
+          $Res Function(SchedulePageViewModel) then) =
+      _$SchedulePageViewModelCopyWithImpl<$Res>;
+  $Res call({Week week, List<ActionModel> actions});
+
+  $WeekCopyWith<$Res> get week;
+}
+
+/// @nodoc
+class _$SchedulePageViewModelCopyWithImpl<$Res>
+    implements $SchedulePageViewModelCopyWith<$Res> {
+  _$SchedulePageViewModelCopyWithImpl(this._value, this._then);
+
+  final SchedulePageViewModel _value;
+  // ignore: unused_field
+  final $Res Function(SchedulePageViewModel) _then;
+
+  @override
+  $Res call({
+    Object? week = freezed,
+    Object? actions = freezed,
+  }) {
+    return _then(_value.copyWith(
+      week: week == freezed
+          ? _value.week
+          : week // ignore: cast_nullable_to_non_nullable
+              as Week,
+      actions: actions == freezed
+          ? _value.actions
+          : actions // ignore: cast_nullable_to_non_nullable
+              as List<ActionModel>,
+    ));
+  }
+
+  @override
+  $WeekCopyWith<$Res> get week {
+    return $WeekCopyWith<$Res>(_value.week, (value) {
+      return _then(_value.copyWith(week: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$SchedulePageViewModelCopyWith<$Res>
+    implements $SchedulePageViewModelCopyWith<$Res> {
+  factory _$SchedulePageViewModelCopyWith(_SchedulePageViewModel value,
+          $Res Function(_SchedulePageViewModel) then) =
+      __$SchedulePageViewModelCopyWithImpl<$Res>;
+  @override
+  $Res call({Week week, List<ActionModel> actions});
+
+  @override
+  $WeekCopyWith<$Res> get week;
+}
+
+/// @nodoc
+class __$SchedulePageViewModelCopyWithImpl<$Res>
+    extends _$SchedulePageViewModelCopyWithImpl<$Res>
+    implements _$SchedulePageViewModelCopyWith<$Res> {
+  __$SchedulePageViewModelCopyWithImpl(_SchedulePageViewModel _value,
+      $Res Function(_SchedulePageViewModel) _then)
+      : super(_value, (v) => _then(v as _SchedulePageViewModel));
+
+  @override
+  _SchedulePageViewModel get _value => super._value as _SchedulePageViewModel;
+
+  @override
+  $Res call({
+    Object? week = freezed,
+    Object? actions = freezed,
+  }) {
+    return _then(_SchedulePageViewModel(
+      week: week == freezed
+          ? _value.week
+          : week // ignore: cast_nullable_to_non_nullable
+              as Week,
+      actions: actions == freezed
+          ? _value.actions
+          : actions // ignore: cast_nullable_to_non_nullable
+              as List<ActionModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SchedulePageViewModel implements _SchedulePageViewModel {
+  const _$_SchedulePageViewModel({required this.week, required this.actions});
+
+  @override
+  final Week week;
+  @override
+  final List<ActionModel> actions;
+
+  @override
+  String toString() {
+    return 'SchedulePageViewModel(week: $week, actions: $actions)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SchedulePageViewModel &&
+            (identical(other.week, week) || other.week == week) &&
+            const DeepCollectionEquality().equals(other.actions, actions));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, week, const DeepCollectionEquality().hash(actions));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SchedulePageViewModelCopyWith<_SchedulePageViewModel> get copyWith =>
+      __$SchedulePageViewModelCopyWithImpl<_SchedulePageViewModel>(
+          this, _$identity);
+}
+
+abstract class _SchedulePageViewModel implements SchedulePageViewModel {
+  const factory _SchedulePageViewModel(
+      {required Week week,
+      required List<ActionModel> actions}) = _$_SchedulePageViewModel;
+
+  @override
+  Week get week;
+  @override
+  List<ActionModel> get actions;
+  @override
+  @JsonKey(ignore: true)
+  _$SchedulePageViewModelCopyWith<_SchedulePageViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Week _$WeekFromJson(Map<String, dynamic> json) {
   return _Week.fromJson(json);
 }

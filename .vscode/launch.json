@@ -5,9 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter",
+            "name": "Dart",
             "type": "dart",
             "request": "launch",
+            "deviceId": "chrome",
+            "args": ["--web-port=2020"],
             "program": "lib/main.dart"
         }
     ]

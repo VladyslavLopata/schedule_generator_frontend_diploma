@@ -5,6 +5,6 @@ class ScheduleState with _$ScheduleState {
   const factory ScheduleState.initial() = InitialScheduleState;
   const factory ScheduleState.loading() = LoadingScheduleState;
   const factory ScheduleState.loaded({
-    required Week week,
+    required SchedulePageViewModel viewModel,
   }) = LoadedScheduleState;
 }
