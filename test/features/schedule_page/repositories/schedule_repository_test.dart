@@ -30,7 +30,7 @@ void main() {
 
           final week = await repository.getCurrentWeek();
 
-          expect(fakeWeek, week);
+          expect(week, fakeWeek);
         },
       );
 
@@ -42,14 +42,12 @@ void main() {
           when(
             () => fileReader.read(any()),
           ).thenAnswer(
-            (_) async => jsonEncode('}{'),
+            (_) async => '}{',
           );
 
           expect(
             () async => await repository.getCurrentWeek(),
-            throwsA(
-              const TypeMatcher<Error>(),
-            ),
+            throwsException,
           );
         },
       );
