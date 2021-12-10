@@ -14,7 +14,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 User _$UserFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String?) {
+  switch (json['type']) {
     case 'student':
       return Student.fromJson(json);
     case 'admin':
@@ -23,8 +23,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
       return Unauthorized.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'User',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json, 'type', 'User', 'Invalid union type "${json['type']}"!');
   }
 }
 
@@ -161,13 +161,17 @@ class _$StudentCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$Student implements Student {
-  const _$Student({required this.credentials});
+  const _$Student({required this.credentials, String? $type})
+      : $type = $type ?? 'student';
 
   factory _$Student.fromJson(Map<String, dynamic> json) =>
       _$$StudentFromJson(json);
 
   @override
   final Credentials credentials;
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -261,7 +265,7 @@ class _$Student implements Student {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StudentToJson(this)..['runtimeType'] = 'student';
+    return _$$StudentToJson(this);
   }
 }
 
@@ -316,12 +320,16 @@ class _$AdminCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$Admin implements Admin {
-  const _$Admin({required this.credentials});
+  const _$Admin({required this.credentials, String? $type})
+      : $type = $type ?? 'admin';
 
   factory _$Admin.fromJson(Map<String, dynamic> json) => _$$AdminFromJson(json);
 
   @override
   final Credentials credentials;
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -415,7 +423,7 @@ class _$Admin implements Admin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AdminToJson(this)..['runtimeType'] = 'admin';
+    return _$$AdminToJson(this);
   }
 }
 
@@ -450,10 +458,13 @@ class _$UnauthorizedCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$Unauthorized implements Unauthorized {
-  const _$Unauthorized();
+  const _$Unauthorized({String? $type}) : $type = $type ?? 'unauthorized';
 
   factory _$Unauthorized.fromJson(Map<String, dynamic> json) =>
       _$$UnauthorizedFromJson(json);
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -539,7 +550,7 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UnauthorizedToJson(this)..['runtimeType'] = 'unauthorized';
+    return _$$UnauthorizedToJson(this);
   }
 }
 
@@ -558,9 +569,9 @@ Credentials _$CredentialsFromJson(Map<String, dynamic> json) {
 class _$CredentialsTearOff {
   const _$CredentialsTearOff();
 
-  _Credentials call({required String login, required String password}) {
+  _Credentials call({required String email, required String password}) {
     return _Credentials(
-      login: login,
+      email: email,
       password: password,
     );
   }
@@ -575,7 +586,7 @@ const $Credentials = _$CredentialsTearOff();
 
 /// @nodoc
 mixin _$Credentials {
-  String get login => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -589,7 +600,7 @@ abstract class $CredentialsCopyWith<$Res> {
   factory $CredentialsCopyWith(
           Credentials value, $Res Function(Credentials) then) =
       _$CredentialsCopyWithImpl<$Res>;
-  $Res call({String login, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -602,13 +613,13 @@ class _$CredentialsCopyWithImpl<$Res> implements $CredentialsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? login = freezed,
+    Object? email = freezed,
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
-      login: login == freezed
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -625,7 +636,7 @@ abstract class _$CredentialsCopyWith<$Res>
           _Credentials value, $Res Function(_Credentials) then) =
       __$CredentialsCopyWithImpl<$Res>;
   @override
-  $Res call({String login, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -640,13 +651,13 @@ class __$CredentialsCopyWithImpl<$Res> extends _$CredentialsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? login = freezed,
+    Object? email = freezed,
     Object? password = freezed,
   }) {
     return _then(_Credentials(
-      login: login == freezed
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -659,19 +670,19 @@ class __$CredentialsCopyWithImpl<$Res> extends _$CredentialsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Credentials implements _Credentials {
-  const _$_Credentials({required this.login, required this.password});
+  const _$_Credentials({required this.email, required this.password});
 
   factory _$_Credentials.fromJson(Map<String, dynamic> json) =>
       _$$_CredentialsFromJson(json);
 
   @override
-  final String login;
+  final String email;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'Credentials(login: $login, password: $password)';
+    return 'Credentials(email: $email, password: $password)';
   }
 
   @override
@@ -679,13 +690,13 @@ class _$_Credentials implements _Credentials {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Credentials &&
-            (identical(other.login, login) || other.login == login) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, login, password);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -700,13 +711,13 @@ class _$_Credentials implements _Credentials {
 
 abstract class _Credentials implements Credentials {
   const factory _Credentials(
-      {required String login, required String password}) = _$_Credentials;
+      {required String email, required String password}) = _$_Credentials;
 
   factory _Credentials.fromJson(Map<String, dynamic> json) =
       _$_Credentials.fromJson;
 
   @override
-  String get login;
+  String get email;
   @override
   String get password;
   @override

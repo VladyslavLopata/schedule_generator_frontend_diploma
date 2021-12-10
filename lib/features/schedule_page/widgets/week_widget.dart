@@ -6,14 +6,18 @@ import 'package:kpi_schedule/features/schedule_page/view_models/action_model.dar
 import 'package:kpi_schedule/features/schedule_page/view_models/schedule_page_view_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+const _searchKey = 'Шукати: ';
+
 class WeekWidget extends StatelessWidget {
   final Week week;
   final List<ActionModel> actions;
+  final SearchModel searchModel;
 
   const WeekWidget({
     Key? key,
     required this.week,
     required this.actions,
+    required this.searchModel,
   }) : super(key: key);
 
   @override
@@ -22,9 +26,27 @@ class WeekWidget extends StatelessWidget {
     final mapper = getIt<WeekMapper>();
 
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const Text(_searchKey),
+            ...searchModel.searchKeys.map(
+              (key) {
+                return CheckboxListTile(
+                  value: key == searchModel.selectedSearchKey,
+                  title: Text(key.title),
+                  onChanged: (_) => bloc.add(
+                    ChangeSearchKeyEvent(key: key),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text(week.title),
-        leading: const Icon(Icons.menu),
         actions: actions
             .map(
               (action) => _WeekAction(
@@ -60,9 +82,12 @@ class _WeekAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: action,
-      child: Text(title),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: action,
+        child: Text(title),
+      ),
     );
   }
 }

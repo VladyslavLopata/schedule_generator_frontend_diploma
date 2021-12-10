@@ -18,9 +18,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc(this._authService, this._textEditingService)
       : super(const InitialState()) {
-    on<AuthorizeEvent>((event, emit) {
+    on<AuthorizeEvent>((event, emit) async {
       final credentials = _textEditingService.credentials;
-      _authService.authorize(credentials);
+      await _authService.authorize(credentials);
 
       final router = getIt<AppRouter>();
       router.replaceNamed(scheduleRoute);
@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     on<LoginChangedEvent>((event, emit) {
       final login = event.login;
-      _textEditingService.onLoginChanged(login);
+      _textEditingService.onEmailChanged(login);
     });
 
     on<PasswordChangedEvent>((event, emit) {

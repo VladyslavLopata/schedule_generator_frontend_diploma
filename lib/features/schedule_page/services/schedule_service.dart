@@ -1,11 +1,22 @@
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kpi_schedule/core/entities/user.dart';
+import 'package:kpi_schedule/core/failures/failure.dart';
 import 'package:kpi_schedule/core/router/app_router.dart';
 import 'package:kpi_schedule/core/router/routes.dart';
 import 'package:kpi_schedule/core/services/authorization_service.dart';
 import 'package:kpi_schedule/features/schedule_page/repositories/schedule_repository.dart';
 import 'package:kpi_schedule/features/schedule_page/view_models/action_model.dart';
 import 'package:kpi_schedule/features/schedule_page/view_models/schedule_page_view_model.dart';
+
+// Search keys
+const _teacherKey = 'Викладача';
+const _studentKey = 'Студента';
+const _groupKey = 'Групу';
+
+//Actions keys
+const _manageKey = 'Управління';
+const _signOutKey = 'Вийти';
 
 @injectable
 class ScheduleService {
@@ -23,13 +34,32 @@ class ScheduleService {
     await action.map(signOut: _signOut, addLesson: _addLesson);
   }
 
-  Future<SchedulePageViewModel> initScheduleViewModel() async {
-    final week = await _getCurrentWeek();
+  Future<Either<Failure, SchedulePageViewModel>> initScheduleViewModel() async {
+    final weekOption = await _getCurrentWeek();
+
+    if (weekOption.isLeft()) {
+      return const Left(ServerFailure());
+    }
+
+    final week = weekOption.toOption().toNullable()!;
+
     final actions = await _getAvailableActions();
 
-    return SchedulePageViewModel(
-      week: week,
-      actions: actions,
+    const keys = [
+      SearchKey(title: _studentKey),
+      SearchKey(title: _groupKey),
+      SearchKey(title: _teacherKey),
+    ];
+
+    return Right(
+      SchedulePageViewModel(
+        week: week,
+        actions: actions,
+        searchModel: SearchModel(
+          selectedSearchKey: keys[0],
+          searchKeys: keys,
+        ),
+      ),
     );
   }
 
@@ -50,17 +80,17 @@ class ScheduleService {
   Future<List<ActionModel>> _getAvailableActions() async {
     return [
       const ManageAction(
-        title: 'Управління',
+        title: _manageKey,
         allowedUserTypes: [Admin],
       ),
       const SignOutAction(
-        title: 'Вийти',
+        title: _signOutKey,
         allowedUserTypes: [Admin, Unauthorized],
       ),
     ];
   }
 
-  Future<Week> _getCurrentWeek() async {
+  Future<Either<Failure, Week>> _getCurrentWeek() async {
     return _scheduleRepository.getCurrentWeek();
   }
 

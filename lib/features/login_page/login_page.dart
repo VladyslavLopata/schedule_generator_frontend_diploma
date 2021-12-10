@@ -38,17 +38,12 @@ class LoginPage extends StatelessWidget {
                     decoration: const InputDecoration(hintText: passwordHint),
                   ),
                   const SmallVerticalSpacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () => loginBloc.add(
-                          const AuthorizeEvent(),
-                        ),
-                        child: const Text(loginButtonText),
-                      ),
-                    ],
-                  )
+                  ElevatedButton(
+                    onPressed: () => loginBloc.add(
+                      const AuthorizeEvent(),
+                    ),
+                    child: const Text(loginButtonText),
+                  ),
                 ],
               );
             },

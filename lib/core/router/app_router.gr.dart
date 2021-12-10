@@ -77,4 +77,9 @@ class LessonAdditionPageRouteArgs {
   final Key? key;
 
   final Lesson lesson;
+
+  @override
+  String toString() {
+    return 'LessonAdditionPageRouteArgs{key: $key, lesson: $lesson}';
+  }
 }

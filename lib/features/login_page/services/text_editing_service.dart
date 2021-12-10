@@ -6,10 +6,10 @@ class TextEditingService {
   late Credentials _credentials;
 
   TextEditingService()
-      : _credentials = const Credentials(login: '', password: '');
+      : _credentials = const Credentials(email: '', password: '');
 
-  void onLoginChanged(String login) {
-    _credentials = _credentials.copyWith(login: login);
+  void onEmailChanged(String email) {
+    _credentials = _credentials.copyWith(email: email);
   }
 
   void onPasswordChanged(String password) {

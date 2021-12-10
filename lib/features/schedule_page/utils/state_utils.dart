@@ -20,6 +20,7 @@ class StateUtils {
     return WeekWidget(
       week: viewModel.week,
       actions: viewModel.actions,
+      searchModel: viewModel.searchModel,
     );
   }
 

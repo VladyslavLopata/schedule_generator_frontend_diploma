@@ -18,10 +18,13 @@ class _$SchedulePageViewModelTearOff {
   const _$SchedulePageViewModelTearOff();
 
   _SchedulePageViewModel call(
-      {required Week week, required List<ActionModel> actions}) {
+      {required Week week,
+      required List<ActionModel> actions,
+      required SearchModel searchModel}) {
     return _SchedulePageViewModel(
       week: week,
       actions: actions,
+      searchModel: searchModel,
     );
   }
 }
@@ -33,6 +36,7 @@ const $SchedulePageViewModel = _$SchedulePageViewModelTearOff();
 mixin _$SchedulePageViewModel {
   Week get week => throw _privateConstructorUsedError;
   List<ActionModel> get actions => throw _privateConstructorUsedError;
+  SearchModel get searchModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SchedulePageViewModelCopyWith<SchedulePageViewModel> get copyWith =>
@@ -44,9 +48,10 @@ abstract class $SchedulePageViewModelCopyWith<$Res> {
   factory $SchedulePageViewModelCopyWith(SchedulePageViewModel value,
           $Res Function(SchedulePageViewModel) then) =
       _$SchedulePageViewModelCopyWithImpl<$Res>;
-  $Res call({Week week, List<ActionModel> actions});
+  $Res call({Week week, List<ActionModel> actions, SearchModel searchModel});
 
   $WeekCopyWith<$Res> get week;
+  $SearchModelCopyWith<$Res> get searchModel;
 }
 
 /// @nodoc
@@ -62,6 +67,7 @@ class _$SchedulePageViewModelCopyWithImpl<$Res>
   $Res call({
     Object? week = freezed,
     Object? actions = freezed,
+    Object? searchModel = freezed,
   }) {
     return _then(_value.copyWith(
       week: week == freezed
@@ -72,6 +78,10 @@ class _$SchedulePageViewModelCopyWithImpl<$Res>
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as List<ActionModel>,
+      searchModel: searchModel == freezed
+          ? _value.searchModel
+          : searchModel // ignore: cast_nullable_to_non_nullable
+              as SearchModel,
     ));
   }
 
@@ -79,6 +89,13 @@ class _$SchedulePageViewModelCopyWithImpl<$Res>
   $WeekCopyWith<$Res> get week {
     return $WeekCopyWith<$Res>(_value.week, (value) {
       return _then(_value.copyWith(week: value));
+    });
+  }
+
+  @override
+  $SearchModelCopyWith<$Res> get searchModel {
+    return $SearchModelCopyWith<$Res>(_value.searchModel, (value) {
+      return _then(_value.copyWith(searchModel: value));
     });
   }
 }
@@ -90,10 +107,12 @@ abstract class _$SchedulePageViewModelCopyWith<$Res>
           $Res Function(_SchedulePageViewModel) then) =
       __$SchedulePageViewModelCopyWithImpl<$Res>;
   @override
-  $Res call({Week week, List<ActionModel> actions});
+  $Res call({Week week, List<ActionModel> actions, SearchModel searchModel});
 
   @override
   $WeekCopyWith<$Res> get week;
+  @override
+  $SearchModelCopyWith<$Res> get searchModel;
 }
 
 /// @nodoc
@@ -111,6 +130,7 @@ class __$SchedulePageViewModelCopyWithImpl<$Res>
   $Res call({
     Object? week = freezed,
     Object? actions = freezed,
+    Object? searchModel = freezed,
   }) {
     return _then(_SchedulePageViewModel(
       week: week == freezed
@@ -121,6 +141,10 @@ class __$SchedulePageViewModelCopyWithImpl<$Res>
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as List<ActionModel>,
+      searchModel: searchModel == freezed
+          ? _value.searchModel
+          : searchModel // ignore: cast_nullable_to_non_nullable
+              as SearchModel,
     ));
   }
 }
@@ -128,16 +152,19 @@ class __$SchedulePageViewModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SchedulePageViewModel implements _SchedulePageViewModel {
-  const _$_SchedulePageViewModel({required this.week, required this.actions});
+  const _$_SchedulePageViewModel(
+      {required this.week, required this.actions, required this.searchModel});
 
   @override
   final Week week;
   @override
   final List<ActionModel> actions;
+  @override
+  final SearchModel searchModel;
 
   @override
   String toString() {
-    return 'SchedulePageViewModel(week: $week, actions: $actions)';
+    return 'SchedulePageViewModel(week: $week, actions: $actions, searchModel: $searchModel)';
   }
 
   @override
@@ -146,12 +173,14 @@ class _$_SchedulePageViewModel implements _SchedulePageViewModel {
         (other.runtimeType == runtimeType &&
             other is _SchedulePageViewModel &&
             (identical(other.week, week) || other.week == week) &&
-            const DeepCollectionEquality().equals(other.actions, actions));
+            const DeepCollectionEquality().equals(other.actions, actions) &&
+            (identical(other.searchModel, searchModel) ||
+                other.searchModel == searchModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, week, const DeepCollectionEquality().hash(actions));
+  int get hashCode => Object.hash(runtimeType, week,
+      const DeepCollectionEquality().hash(actions), searchModel);
 
   @JsonKey(ignore: true)
   @override
@@ -163,15 +192,304 @@ class _$_SchedulePageViewModel implements _SchedulePageViewModel {
 abstract class _SchedulePageViewModel implements SchedulePageViewModel {
   const factory _SchedulePageViewModel(
       {required Week week,
-      required List<ActionModel> actions}) = _$_SchedulePageViewModel;
+      required List<ActionModel> actions,
+      required SearchModel searchModel}) = _$_SchedulePageViewModel;
 
   @override
   Week get week;
   @override
   List<ActionModel> get actions;
   @override
+  SearchModel get searchModel;
+  @override
   @JsonKey(ignore: true)
   _$SchedulePageViewModelCopyWith<_SchedulePageViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$SearchKeyTearOff {
+  const _$SearchKeyTearOff();
+
+  _SearchKey call({required String title}) {
+    return _SearchKey(
+      title: title,
+    );
+  }
+}
+
+/// @nodoc
+const $SearchKey = _$SearchKeyTearOff();
+
+/// @nodoc
+mixin _$SearchKey {
+  String get title => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchKeyCopyWith<SearchKey> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchKeyCopyWith<$Res> {
+  factory $SearchKeyCopyWith(SearchKey value, $Res Function(SearchKey) then) =
+      _$SearchKeyCopyWithImpl<$Res>;
+  $Res call({String title});
+}
+
+/// @nodoc
+class _$SearchKeyCopyWithImpl<$Res> implements $SearchKeyCopyWith<$Res> {
+  _$SearchKeyCopyWithImpl(this._value, this._then);
+
+  final SearchKey _value;
+  // ignore: unused_field
+  final $Res Function(SearchKey) _then;
+
+  @override
+  $Res call({
+    Object? title = freezed,
+  }) {
+    return _then(_value.copyWith(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SearchKeyCopyWith<$Res> implements $SearchKeyCopyWith<$Res> {
+  factory _$SearchKeyCopyWith(
+          _SearchKey value, $Res Function(_SearchKey) then) =
+      __$SearchKeyCopyWithImpl<$Res>;
+  @override
+  $Res call({String title});
+}
+
+/// @nodoc
+class __$SearchKeyCopyWithImpl<$Res> extends _$SearchKeyCopyWithImpl<$Res>
+    implements _$SearchKeyCopyWith<$Res> {
+  __$SearchKeyCopyWithImpl(_SearchKey _value, $Res Function(_SearchKey) _then)
+      : super(_value, (v) => _then(v as _SearchKey));
+
+  @override
+  _SearchKey get _value => super._value as _SearchKey;
+
+  @override
+  $Res call({
+    Object? title = freezed,
+  }) {
+    return _then(_SearchKey(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchKey implements _SearchKey {
+  const _$_SearchKey({required this.title});
+
+  @override
+  final String title;
+
+  @override
+  String toString() {
+    return 'SearchKey(title: $title)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SearchKey &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchKeyCopyWith<_SearchKey> get copyWith =>
+      __$SearchKeyCopyWithImpl<_SearchKey>(this, _$identity);
+}
+
+abstract class _SearchKey implements SearchKey {
+  const factory _SearchKey({required String title}) = _$_SearchKey;
+
+  @override
+  String get title;
+  @override
+  @JsonKey(ignore: true)
+  _$SearchKeyCopyWith<_SearchKey> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$SearchModelTearOff {
+  const _$SearchModelTearOff();
+
+  _SearchModel call(
+      {required SearchKey selectedSearchKey,
+      required List<SearchKey> searchKeys}) {
+    return _SearchModel(
+      selectedSearchKey: selectedSearchKey,
+      searchKeys: searchKeys,
+    );
+  }
+}
+
+/// @nodoc
+const $SearchModel = _$SearchModelTearOff();
+
+/// @nodoc
+mixin _$SearchModel {
+  SearchKey get selectedSearchKey => throw _privateConstructorUsedError;
+  List<SearchKey> get searchKeys => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchModelCopyWith<SearchModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchModelCopyWith<$Res> {
+  factory $SearchModelCopyWith(
+          SearchModel value, $Res Function(SearchModel) then) =
+      _$SearchModelCopyWithImpl<$Res>;
+  $Res call({SearchKey selectedSearchKey, List<SearchKey> searchKeys});
+
+  $SearchKeyCopyWith<$Res> get selectedSearchKey;
+}
+
+/// @nodoc
+class _$SearchModelCopyWithImpl<$Res> implements $SearchModelCopyWith<$Res> {
+  _$SearchModelCopyWithImpl(this._value, this._then);
+
+  final SearchModel _value;
+  // ignore: unused_field
+  final $Res Function(SearchModel) _then;
+
+  @override
+  $Res call({
+    Object? selectedSearchKey = freezed,
+    Object? searchKeys = freezed,
+  }) {
+    return _then(_value.copyWith(
+      selectedSearchKey: selectedSearchKey == freezed
+          ? _value.selectedSearchKey
+          : selectedSearchKey // ignore: cast_nullable_to_non_nullable
+              as SearchKey,
+      searchKeys: searchKeys == freezed
+          ? _value.searchKeys
+          : searchKeys // ignore: cast_nullable_to_non_nullable
+              as List<SearchKey>,
+    ));
+  }
+
+  @override
+  $SearchKeyCopyWith<$Res> get selectedSearchKey {
+    return $SearchKeyCopyWith<$Res>(_value.selectedSearchKey, (value) {
+      return _then(_value.copyWith(selectedSearchKey: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$SearchModelCopyWith<$Res>
+    implements $SearchModelCopyWith<$Res> {
+  factory _$SearchModelCopyWith(
+          _SearchModel value, $Res Function(_SearchModel) then) =
+      __$SearchModelCopyWithImpl<$Res>;
+  @override
+  $Res call({SearchKey selectedSearchKey, List<SearchKey> searchKeys});
+
+  @override
+  $SearchKeyCopyWith<$Res> get selectedSearchKey;
+}
+
+/// @nodoc
+class __$SearchModelCopyWithImpl<$Res> extends _$SearchModelCopyWithImpl<$Res>
+    implements _$SearchModelCopyWith<$Res> {
+  __$SearchModelCopyWithImpl(
+      _SearchModel _value, $Res Function(_SearchModel) _then)
+      : super(_value, (v) => _then(v as _SearchModel));
+
+  @override
+  _SearchModel get _value => super._value as _SearchModel;
+
+  @override
+  $Res call({
+    Object? selectedSearchKey = freezed,
+    Object? searchKeys = freezed,
+  }) {
+    return _then(_SearchModel(
+      selectedSearchKey: selectedSearchKey == freezed
+          ? _value.selectedSearchKey
+          : selectedSearchKey // ignore: cast_nullable_to_non_nullable
+              as SearchKey,
+      searchKeys: searchKeys == freezed
+          ? _value.searchKeys
+          : searchKeys // ignore: cast_nullable_to_non_nullable
+              as List<SearchKey>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchModel implements _SearchModel {
+  const _$_SearchModel(
+      {required this.selectedSearchKey, required this.searchKeys});
+
+  @override
+  final SearchKey selectedSearchKey;
+  @override
+  final List<SearchKey> searchKeys;
+
+  @override
+  String toString() {
+    return 'SearchModel(selectedSearchKey: $selectedSearchKey, searchKeys: $searchKeys)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SearchModel &&
+            (identical(other.selectedSearchKey, selectedSearchKey) ||
+                other.selectedSearchKey == selectedSearchKey) &&
+            const DeepCollectionEquality()
+                .equals(other.searchKeys, searchKeys));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectedSearchKey,
+      const DeepCollectionEquality().hash(searchKeys));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchModelCopyWith<_SearchModel> get copyWith =>
+      __$SearchModelCopyWithImpl<_SearchModel>(this, _$identity);
+}
+
+abstract class _SearchModel implements SearchModel {
+  const factory _SearchModel(
+      {required SearchKey selectedSearchKey,
+      required List<SearchKey> searchKeys}) = _$_SearchModel;
+
+  @override
+  SearchKey get selectedSearchKey;
+  @override
+  List<SearchKey> get searchKeys;
+  @override
+  @JsonKey(ignore: true)
+  _$SearchModelCopyWith<_SearchModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

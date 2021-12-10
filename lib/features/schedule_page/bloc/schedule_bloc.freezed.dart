@@ -26,6 +26,12 @@ class _$ScheduleEventTearOff {
       action: action,
     );
   }
+
+  ChangeSearchKeyEvent changeSearchKey({required SearchKey key}) {
+    return ChangeSearchKeyEvent(
+      key: key,
+    );
+  }
 }
 
 /// @nodoc
@@ -37,18 +43,21 @@ mixin _$ScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ActionModel action) completeAction,
+    required TResult Function(SearchKey key) changeSearchKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,18 +65,21 @@ mixin _$ScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
     required TResult Function(CompleteActionScheduleEvent value) completeAction,
+    required TResult Function(ChangeSearchKeyEvent value) changeSearchKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +145,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ActionModel action) completeAction,
+    required TResult Function(SearchKey key) changeSearchKey,
   }) {
     return initial();
   }
@@ -142,6 +155,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
   }) {
     return initial?.call();
   }
@@ -151,6 +165,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +179,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
     required TResult Function(CompleteActionScheduleEvent value) completeAction,
+    required TResult Function(ChangeSearchKeyEvent value) changeSearchKey,
   }) {
     return initial(this);
   }
@@ -173,6 +189,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
   }) {
     return initial?.call(this);
   }
@@ -182,6 +199,7 @@ class _$InitialScheduleEvent implements InitialScheduleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -273,6 +291,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ActionModel action) completeAction,
+    required TResult Function(SearchKey key) changeSearchKey,
   }) {
     return completeAction(action);
   }
@@ -282,6 +301,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
   }) {
     return completeAction?.call(action);
   }
@@ -291,6 +311,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
     required TResult orElse(),
   }) {
     if (completeAction != null) {
@@ -304,6 +325,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialScheduleEvent value) initial,
     required TResult Function(CompleteActionScheduleEvent value) completeAction,
+    required TResult Function(ChangeSearchKeyEvent value) changeSearchKey,
   }) {
     return completeAction(this);
   }
@@ -313,6 +335,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
   }) {
     return completeAction?.call(this);
   }
@@ -322,6 +345,7 @@ class _$CompleteActionScheduleEvent implements CompleteActionScheduleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialScheduleEvent value)? initial,
     TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
     required TResult orElse(),
   }) {
     if (completeAction != null) {
@@ -339,6 +363,156 @@ abstract class CompleteActionScheduleEvent implements ScheduleEvent {
   @JsonKey(ignore: true)
   $CompleteActionScheduleEventCopyWith<CompleteActionScheduleEvent>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeSearchKeyEventCopyWith<$Res> {
+  factory $ChangeSearchKeyEventCopyWith(ChangeSearchKeyEvent value,
+          $Res Function(ChangeSearchKeyEvent) then) =
+      _$ChangeSearchKeyEventCopyWithImpl<$Res>;
+  $Res call({SearchKey key});
+
+  $SearchKeyCopyWith<$Res> get key;
+}
+
+/// @nodoc
+class _$ChangeSearchKeyEventCopyWithImpl<$Res>
+    extends _$ScheduleEventCopyWithImpl<$Res>
+    implements $ChangeSearchKeyEventCopyWith<$Res> {
+  _$ChangeSearchKeyEventCopyWithImpl(
+      ChangeSearchKeyEvent _value, $Res Function(ChangeSearchKeyEvent) _then)
+      : super(_value, (v) => _then(v as ChangeSearchKeyEvent));
+
+  @override
+  ChangeSearchKeyEvent get _value => super._value as ChangeSearchKeyEvent;
+
+  @override
+  $Res call({
+    Object? key = freezed,
+  }) {
+    return _then(ChangeSearchKeyEvent(
+      key: key == freezed
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as SearchKey,
+    ));
+  }
+
+  @override
+  $SearchKeyCopyWith<$Res> get key {
+    return $SearchKeyCopyWith<$Res>(_value.key, (value) {
+      return _then(_value.copyWith(key: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSearchKeyEvent implements ChangeSearchKeyEvent {
+  const _$ChangeSearchKeyEvent({required this.key});
+
+  @override
+  final SearchKey key;
+
+  @override
+  String toString() {
+    return 'ScheduleEvent.changeSearchKey(key: $key)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ChangeSearchKeyEvent &&
+            (identical(other.key, key) || other.key == key));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, key);
+
+  @JsonKey(ignore: true)
+  @override
+  $ChangeSearchKeyEventCopyWith<ChangeSearchKeyEvent> get copyWith =>
+      _$ChangeSearchKeyEventCopyWithImpl<ChangeSearchKeyEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ActionModel action) completeAction,
+    required TResult Function(SearchKey key) changeSearchKey,
+  }) {
+    return changeSearchKey(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
+  }) {
+    return changeSearchKey?.call(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ActionModel action)? completeAction,
+    TResult Function(SearchKey key)? changeSearchKey,
+    required TResult orElse(),
+  }) {
+    if (changeSearchKey != null) {
+      return changeSearchKey(key);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialScheduleEvent value) initial,
+    required TResult Function(CompleteActionScheduleEvent value) completeAction,
+    required TResult Function(ChangeSearchKeyEvent value) changeSearchKey,
+  }) {
+    return changeSearchKey(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
+  }) {
+    return changeSearchKey?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialScheduleEvent value)? initial,
+    TResult Function(CompleteActionScheduleEvent value)? completeAction,
+    TResult Function(ChangeSearchKeyEvent value)? changeSearchKey,
+    required TResult orElse(),
+  }) {
+    if (changeSearchKey != null) {
+      return changeSearchKey(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeSearchKeyEvent implements ScheduleEvent {
+  const factory ChangeSearchKeyEvent({required SearchKey key}) =
+      _$ChangeSearchKeyEvent;
+
+  SearchKey get key;
+  @JsonKey(ignore: true)
+  $ChangeSearchKeyEventCopyWith<ChangeSearchKeyEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

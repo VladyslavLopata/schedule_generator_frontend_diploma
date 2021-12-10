@@ -9,7 +9,23 @@ class SchedulePageViewModel with _$SchedulePageViewModel {
   const factory SchedulePageViewModel({
     required Week week,
     required List<ActionModel> actions,
+    required SearchModel searchModel,
   }) = _SchedulePageViewModel;
+}
+
+@freezed
+class SearchKey with _$SearchKey {
+  const factory SearchKey({
+    required String title,
+  }) = _SearchKey;
+}
+
+@freezed
+class SearchModel with _$SearchModel {
+  const factory SearchModel({
+    required SearchKey selectedSearchKey,
+    required List<SearchKey> searchKeys,
+  }) = _SearchModel;
 }
 
 @freezed

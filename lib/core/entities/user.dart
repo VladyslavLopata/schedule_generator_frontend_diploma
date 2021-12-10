@@ -21,7 +21,7 @@ class User with _$User {
 @freezed
 class Credentials with _$Credentials {
   const factory Credentials({
-    required String login,
+    required String email,
     required String password,
   }) = _Credentials;
 
